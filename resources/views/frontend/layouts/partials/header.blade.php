@@ -55,19 +55,6 @@
                                             src="{{ asset('frontend') }}/assets/images/user-avatar11.png"
                                             alt="fashionwave"></span>
                                     <a href="signin.html" class="lang">My Account</a>
-                                    <!-- <span class="flag">
-                                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAGmUlEQVR4nO2dW2wUVRjH/zOzl267tHTbagNN5SJBBJRyMUWD4gX0QSVKREiML5AYE16IiYnhyRd5IISExChP6hMJPkIiqWBjVBCqNhIRsQRIJb1AW6At3evM+NAMdLdz5rI7c+bM9vslfenezny/+b7vnLnsSrqugxCHSNADcEvk+H3Xe1BhR53kx1j8QBI5Q8oJvlNElSSUED8F2CGKICGEBCmilKDFBCZEJAksgpDDXUgYRJTCU4zM64OAcMoA+I6bS4aEVYQZfmeLr0KqSUQpfonxRUg1iyjFazFcewhhj6cZMpcyoxSvMsWzDJnLMgDvtt8TIXNdhoEXcahYCMkoptJ4VCSEZJhTSVzKFkIyrCk3PmUJIRnOKCdOroWQDHe4jRctDAXD8cKQMqNynCweKUMEw5EQyg5vcBJHyhDBsBVC2eEtdvGkDBEMSyGUHf5gFVemEJLhL6z4UskSDFMhlB18MIszZYhgkBDBmCWEyhVfSuNNGSIYRUIoO4JhZtwpQwSD6z2Gm5pldL+UmPX/V39M48ywVvS/hiiwZ0kUbyxQsKpBRjICTKnAyQEV75/P2n7WwoSEra0KXmhRsKpBQnN8+g8A7uZ0XLuv4487Gr4bVHF6WIUqSG0Q4qbPzpRSJGR7m4Iv1sWRihefz6mXgaTNiJfPk/DJihh2tiuIyObng1oTEloTwLPNCvYui+LmlIbDV/I40ldA0F4elKwg+8eGpoeVc/+KKI5tnC3DYCTLHubuxRH0bk3gvUURpgwz2mplHOqIo2dLDRYHdEebEX8hesgzKQUA8MHSCD5dHYMssYMykjMX8tlTURzdEEdMKT+gaxoVnHslgdUNwd1mKISQR2okvLVQwcGnY7bPvZ2ZLWRXu4KPn7B/rROa4xJObKpBS9yTt3ONEEIA4NvnalAbsd8zR0r6eUscOLrePnpDaQ2/jan4656Gybx1dW6rlXG4IxgjQjR1FgVNx9/jOm5ldOQ0Hc1xCQOZ4tnYvuVRS5E/31axrzeH3rsPX6dIwNttCg6viaE1Yb5P7myP4NA/+aLX8UDSdZ1bQ2dNe0u5OqHhwOU8jv9XQFplPy8uA4PbalEfNRfy66iKF7szyDNiuiwpoWdLAknG67++nseenpzteL1EmJJlcHKggI6uNL65YS0DADqbZKYMAPioN8eUAQB9kzqO9OWZj7+5IALe7V0oIVcnNLx7NmsrwuD5FoX52LVJDefH7MvNsf4C87FUXMLaRr4hEkrIgct5ZF2U7JUN7OFfcCADAC6P65ZN/sn6OSzk5AB7bzUjFWMXlGuTzs3emGILaavlW7SEETKZ1zHqsn+mLJYe9124HbfIkHlRFwPyAHGEFNxP9KxW9O7eh/1Yge+sVxwh5WAl0c2enbRYx9xhHKrxi1AL6beo/UvqnG/aIos+UXpkwG9CLeTSPXY96Wxytmkr6yXmwhAALlp8hh+EWsgPw+wFS3udjE3N9pu36zH20aO7OR1/cj50Emoh58c03JxiB+zgmhjiFlu4NClh7+PsZtM15HCF6iGhFgIAn/ex57frUwq+31yDjvnFmykB2LZQwZnNNZbl6tAV9mEVv3hwjyGPA4xWBxeH0hraTqRdv2dCAS69lkC7TRMfSGvon9IRk6cb/nyLRSUAnBos4PWf+Hb0wo46KfQZklaB3T1ZFDTr/WlBQkZnk4K1jYqtjKG0ht2cj/IahF4IAHTf0vDh7zloHnzV1Hhexztnsxg2OTPJg6oQAgBfXS9g+y9ZjFlcBGHHvxMaNp5O49wo5+X5DKpGCACcGFCx8tQUvryaR8bFhVYjWR37L+awriuNKxPBXghU9MUBfjd2P5o6i8bY9Ammlx+dvtCuvVZCMgJk1OkrV4YyOi6Maui+paJrSHV12N8PjC8V4CqEYGMIqaqSVQ2QEMEoEhL0LwPMVWbGnTJEMGYJoSzhS2m8KUMEg4QIhqkQKlt8MIszZYhgMIVQlvgLK76WGUJS/MEqrlSyBMNWCGWJt9jFkzJEMBwJoSzxBvoi5RDi+jeo6CSWe9xUGMoQwXAthPqJO9zGq6wMISnOKCdOZZcskmJNufGpqIeQFHMqiUvFTZ2kFFNpPDyZZZGUabyIg2fT3rkuxavtp5/vrhD6+e4qx5cMMajmTPGrRPsqxKCaxPjdK7kIMQizGF6TFq49JKwzMZ7j5pohMwlDtgSxAwUmZCYiyQk6i4UQYhCkmKBFGAglpBQ/BYkioBShhZhRjiRRg2/G/+T0lZ3psvX/AAAAAElFTkSuQmCC"
-                                            alt="Fashionwave">
-                                    </span>
-
-                                    <a href="javascript:void(0)" class="lang">rony <i class="fas fa-angle-down"></i></a>
-                                    <ul class="account-list">
-                                        <li class="single-lang"><a class="lang-text"
-                                                href="/user/profile">Profile</a>
-                                        </li>
-                                        <li class="single-lang"><a class="lang-text"
-                                                href="/user/logout">Logout</a></li>
-                                    </ul> -->
                                 </div>
                             </div>
                         </div>
@@ -160,15 +147,15 @@
                 <nav class="menu-area">
                     <ul class="main-menu">
                         <li class="menu-item menu-item-has-children active">
-                            <a class="menu-link" href="index.html">Home</a>
+                            <a class="menu-link" href="{{ url('/') }}">Home</a>
                         </li>
                         <li class="menu-item "><a class="menu-link" href="shop.html">Shop</a>
                         </li>
 
-                        <li class="menu-item "><a class="menu-link" href="about-us.html">About Us</a>
+                        <li class="menu-item "><a class="menu-link" href="{{ route('about') }}">About Us</a>
                         </li>
                         <li class="menu-item ">
-                            <a class="menu-link" href="contact.html">Contact</a>
+                            <a class="menu-link" href="{{ route('contact') }}">Contact</a>
                         </li>
 
                     </ul>
@@ -251,12 +238,12 @@
             </div>
             <nav class="main-menu">
                 <ul class="menu-list">
-                    <li class="menu-item"><a class="menu-link" href="index.html">Home</a></li>
+                    <li class="menu-item"><a class="menu-link" href="{{ url('/') }}">Home</a></li>
                     <li class="menu-item"><a class="menu-link" href="shop.html">Shop</a>
                     </li>
                     <li class="menu-item"><a class="menu-link" href="about-us.html">Categories</a></li>
-                    <li class="menu-item"><a class="menu-link" href="about-us.html">About Us</a></li>
-                    <li class="menu-item"><a class="menu-link" href="/contact-us">Contact</a></li>
+                    <li class="menu-item"><a class="menu-link" href="{{ route('about') }}">About Us</a></li>
+                    <li class="menu-item"><a class="menu-link" href="{{ route('contact') }}">Contact</a></li>
 
                 </ul>
             </nav>

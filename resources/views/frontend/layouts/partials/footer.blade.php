@@ -75,15 +75,15 @@
                             <div class="single-widget">
                                 <h3 class="widget-title">Quick Links</h3>
                                 <ul class="widget-menu">
-                                    <li class="menu-item"><a class="menu-link" href="faq.html">Help
+                                    <li class="menu-item"><a class="menu-link" href="{{ route('faq') }}">Help
                                             &amp; FAQ</a></li>
-                                    <li class="menu-item"><a class="menu-link" href="terms.html">Terms of
+                                    <li class="menu-item"><a class="menu-link" href="{{ route('terms.conditions') }}">Terms of
                                             Conditions</a>
                                     </li>
-                                    <li class="menu-item"><a class="menu-link" href="privacy.html">Privacy
+                                    <li class="menu-item"><a class="menu-link" href="{{ route('privacy') }}">Privacy
                                             Policy</a>
                                     </li>
-                                    <li class="menu-item"><a class="menu-link" href="contact.html">Contact
+                                    <li class="menu-item"><a class="menu-link" href="{{ route('contact') }}">Contact
                                             Us</a>
                                     </li>
                                 </ul>
