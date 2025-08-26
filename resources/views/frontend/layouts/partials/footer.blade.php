@@ -1,5 +1,4 @@
 <!-- footer area start here -->
-<!-- footer area start here -->
 <footer class="footer-area">
     <div class="footer-widget-area">
         <div class="container-fluid">
@@ -77,7 +76,8 @@
                                 <ul class="widget-menu">
                                     <li class="menu-item"><a class="menu-link" href="{{ route('faq') }}">Help
                                             &amp; FAQ</a></li>
-                                    <li class="menu-item"><a class="menu-link" href="{{ route('terms.conditions') }}">Terms of
+                                    <li class="menu-item"><a class="menu-link"
+                                            href="{{ route('terms.conditions') }}">Terms of
                                             Conditions</a>
                                     </li>
                                     <li class="menu-item"><a class="menu-link" href="{{ route('privacy') }}">Privacy
