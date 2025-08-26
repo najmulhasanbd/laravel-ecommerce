@@ -137,9 +137,9 @@
         </div>
     </div>
     <!-- faq-area area end here  -->
-    <div id="AddToCompareItemUrl" data-url="compare.html/add"></div>
+    <div id="AddToCompareItemUrl" data-url="{{ route('compares.index') }}/add"></div>
     <div id="AddToCartIntoSession" data-url="/cart/add"></div>
-    <div id="productWishlistUrl" data-url="wishlist.html/add"></div>
+    <div id="productWishlistUrl" data-url="{{ route('wishlists.index') }}/add"></div>
     <div id="currency-price-url" data-url="/currency-price"></div>
     <div id="currency-symbol-url" data-url="/currency-symbol"></div>
     <div id="productImgAsset" data-url="/uploaded_files/product_image"></div>

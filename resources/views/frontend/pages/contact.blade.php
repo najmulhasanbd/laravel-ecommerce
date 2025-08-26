@@ -71,37 +71,37 @@
                         <h2 class="form-title">Got any questions?</h2>
                         <p class="form-subtitle">Use the form below to get in touch with the sales team</p>
                     </div>
-                    <form method="post" action="/contact-us/store">
-                        <input type="hidden" name="_token" value="z8IzV1IjwBDBzh2xk5mWIRncryxtnW1G2NyKj67x">
+                    <form method="post" action="{{ route('contact.store') }}">
+                        @csrf
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="firstname" name="firstname"
-                                        placeholder="First Name" />
+                                        placeholder="First Name" required />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="lastname" name="lastname"
-                                        placeholder="Last Name" />
+                                        placeholder="Last Name" required />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <input type="email" class="form-control" id="email" name="email"
-                                        placeholder="Email Address" />
+                                        placeholder="Email Address" re\ />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="contact_number" name="contact_number"
-                                        placeholder="Contact Number" />
+                                        placeholder="Contact Number" required />
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <textarea class="form-control message-box" id="message" name="message" rows="3"
-                                        placeholder="Type Message Here.."></textarea>
+                                        placeholder="Type Message Here.." required></textarea>
                                 </div>
                                 <div class="form-button text-center">
                                     <button type="submit" class="form-btn">Send Message</button>
@@ -114,9 +114,9 @@
         </div>
     </div>
     <!-- contact us area end here  -->
-    <div id="AddToCompareItemUrl" data-url="compare.html/add"></div>
+    <div id="AddToCompareItemUrl" data-url="{{ route('compares.index') }}/add"></div>
     <div id="AddToCartIntoSession" data-url="/cart/add"></div>
-    <div id="productWishlistUrl" data-url="wishlist.html/add"></div>
+    <div id="productWishlistUrl" data-url="{{ route('wishlists.index') }}/add"></div>
     <div id="currency-price-url" data-url="/currency-price"></div>
     <div id="currency-symbol-url" data-url="/currency-symbol"></div>
     <div id="productImgAsset" data-url="/uploaded_files/product_image"></div>

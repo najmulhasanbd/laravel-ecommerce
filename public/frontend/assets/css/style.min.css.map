@@ -61,7 +61,7 @@
         "../scss/section/products/_product-single-v3.scss",
         "../scss/section/products/_cart-product.scss",
         "../scss/section/products/_cart-page.scss",
-        "../scss/sectioncheckout.html/_checkout.scss",
+        "../scss/section{{route('checkout.index')}}/_checkout.scss",
         "../scss/section/compare-page/_compare-page.scss",
         "../scss/section/profile-area/_profile-area.scss",
         "../scss/section/profile-area/_edit-profile-page.scss",

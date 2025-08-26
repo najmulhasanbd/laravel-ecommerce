@@ -112,8 +112,8 @@ Version: 1.0
 @import "section/popular-categories-area/popular-categories-area-v2";
 @import "section/section-header-area/section-header-area";
 @import "section/products/single-grid-product";
-@import "section/products/single-grid-product-v2"; 
-@import "section/products/single-grid-product-v3"; 
+@import "section/products/single-grid-product-v2";
+@import "section/products/single-grid-product-v3";
 @import "section/about-area/about-area";
 @import "section/tabs/primary-tabs";
 @import "section/tabs/secendary-tabs";
@@ -150,7 +150,7 @@ Version: 1.0
 @import "section/products/product-single-v3";
 @import "section/products/cart-product";
 @import "section/products/cart-page";
-@import "sectioncheckout.htmlcheckout.html";
+@import "section{{route('checkout.index')}}{{route('checkout.index')}}";
 @import "section/compare-page/compare-page";
 @import "section/profile-area/profile-area";
 @import "section/profile-area/edit-profile-page";

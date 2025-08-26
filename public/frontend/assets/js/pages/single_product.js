@@ -42,7 +42,7 @@
                 console.log(data);
                 $('.totalCountItem').html(data[0]);
                 $('.totalAmount').html(data[1]);
-                window.location.href = 'checkout.html'
+                window.location.href = '{{route('checkout.index')}}'
             }
         });
     });

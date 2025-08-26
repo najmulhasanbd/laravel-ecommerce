@@ -99,7 +99,7 @@
                         <div class="header-right">
 
                             <div class="wishlist single-btn">
-                                <a href="wishlist.html" class="wishlist-btn header-btn">
+                                <a href="{{ route('wishlists.index') }}" class="wishlist-btn header-btn">
                                     <div class="btn-left">
                                         <i class="btn-icon flaticon-like"></i>
                                         <span class="count wishListCuntFromController">0</span>
@@ -112,7 +112,7 @@
                                 </a>
                             </div>
                             <div class="compare single-btn">
-                                <a href="compare.html" class="compare-btn header-btn">
+                                <a href="{{ route('compares.index') }}" class="compare-btn header-btn">
                                     <div class="btn-left">
                                         <i class="btn-icon flaticon-bar-chart"></i>
                                         <span class="count CompareCuntFromController">0</span>
@@ -149,7 +149,7 @@
                         <li class="menu-item menu-item-has-children active">
                             <a class="menu-link" href="{{ url('/') }}">Home</a>
                         </li>
-                        <li class="menu-item "><a class="menu-link" href="shop.html">Shop</a>
+                        <li class="menu-item "><a class="menu-link" href="{{ route('products.index') }}">Shop</a>
                         </li>
 
                         <li class="menu-item "><a class="menu-link" href="{{ route('about') }}">About Us</a>
@@ -175,13 +175,13 @@
                                 src="{{ asset('frontend') }}/assets/images/logo.png" alt="Fashionwave" /></a>
                     </div>
                     <div class="header-right">
-                        <a href="wishlist.html" class="wishlist-btn header-btn">
+                        <a href="{{ route('wishlists.index') }}" class="wishlist-btn header-btn">
                             <div class="btn-left">
                                 <i class="btn-icon flaticon-like"></i>
                                 <span class="count wishListCuntFromController">0</span>
                             </div>
                         </a>
-                        <a href="compare.html" class="compare-btn header-btn">
+                        <a href="{{ route('compares.index') }}" class="compare-btn header-btn">
                             <div class="btn-left">
                                 <i class="btn-icon flaticon-bar-chart"></i>
                                 <span class="count CompareCuntFromController">0</span>
@@ -239,7 +239,7 @@
             <nav class="main-menu">
                 <ul class="menu-list">
                     <li class="menu-item"><a class="menu-link" href="{{ url('/') }}">Home</a></li>
-                    <li class="menu-item"><a class="menu-link" href="shop.html">Shop</a>
+                    <li class="menu-item"><a class="menu-link" href="{{ route('products.index') }}">Shop</a>
                     </li>
                     <li class="menu-item"><a class="menu-link" href="about-us.html">Categories</a></li>
                     <li class="menu-item"><a class="menu-link" href="{{ route('about') }}">About Us</a></li>
@@ -346,11 +346,11 @@
                     <h3>Total</h3>
                     <h4 class="totalAmount"> $ 540</h4>
                 </div>
-                <a href="checkout.html" class="proceed-to-btn d-block text-center">
+                <a href="{{ route('checkout.index') }}" class="proceed-to-btn d-block text-center">
                     Proceed To Checkout
                 </a>
                 <div class="view-cart-go">
-                    <a href="cart.html">View Cart</a>
+                    <a href="{{ route('cart.index') }}">View Cart</a>
                 </div>
             </div>
         </div>

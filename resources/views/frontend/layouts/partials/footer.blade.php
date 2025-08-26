@@ -98,14 +98,33 @@
                             Receive our latest updates about our <br> products and promotions.
                         </p>
                         <div class="newsletter-form mb-40">
-                            <form id="subscribe_form" name="subscribe_form" method="POST">
-                                <input type="hidden" name="_token" value="z8IzV1IjwBDBzh2xk5mWIRncryxtnW1G2NyKj67x">
-                                <div class="form-group">
-                                    <input type="email" class="form-control subscribe" id="subscribe"
-                                        name="subscribe" placeholder="Email" required />
-                                    <button type="button" class="subscribe-btn subscribe_btn">Subscribe</button>
+                            <form id="subscribe_form" method="POST" action="{{ route('subscribe.store') }}">
+                                @csrf
+                                <div class="form-group d-flex">
+                                    <input type="email" class="form-control subscribe" id="subscribe" name="email"
+                                        placeholder="Enter your email" required>
+                                    <button type="submit" class="btn btn-primary subscribe-btn">Subscribe</button>
                                 </div>
                             </form>
+
+                            {{-- Success Message --}}
+                            @if (session('success'))
+                                <div class="alert alert-success mt-2">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
+
+                            {{-- Validation Errors --}}
+                            @if ($errors->any())
+                                <div class="alert alert-danger mt-2">
+                                    <ul class="mb-0">
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+
                         </div>
                     </div>
                 </div>

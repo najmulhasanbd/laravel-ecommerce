@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CompareItem extends Model
+class Cart extends Model
 {
-    //
+    protected $guarded=[];
 }
