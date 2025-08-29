@@ -145,7 +145,7 @@
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="single-grid-product">
                             <div class="product-top">
-                                <a href="/product/single/fit-flare-dress-2"><img class="product-thumbnal"
+                                <a href="{{ route('products.details', $data->slug) }}"><img class="product-thumbnal"
                                         src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
                                         alt="product" /></a>
                                 <div class="product-flags">
@@ -315,7 +315,7 @@
                                         </ul>
                                     </div>
                                     <div class="product-info text-center">
-                                        <h4 class="product-catagory">{{ ucwords($data->brand->en_brand_name) }}</h4>
+                                        <h4 class="product-catagory">{{ ucwords($data->brand->en_brand_name) ?? '' }}</h4>
                                         <input type="hidden" name="quantity" value="1" id="product_quantity">
                                         <h3 class="product-name"><a class="product-link"
                                                 href="/product/single/fit-flare-dress-2">{{ $data->en_name }}</a>
@@ -365,7 +365,7 @@
                                         </ul>
                                     </div>
                                     <div class="product-info text-center">
-                                        <h4 class="product-catagory">{{ ucwords($data->brand->en_brand_name) }}</h4>
+                                        <h4 class="product-catagory">{{ ucwords($data->brand->en_brand_name) ?? '' }}</h4>
                                         <input type="hidden" name="quantity" value="1" id="product_quantity">
                                         <h3 class="product-name"><a class="product-link"
                                                 href="/product/single/fit-flare-dress-2">{{ $data->en_name }}</a>
@@ -415,7 +415,7 @@
                                         </ul>
                                     </div>
                                     <div class="product-info text-center">
-                                        <h4 class="product-catagory">{{ ucwords($data->brand->en_brand_name) }}</h4>
+                                        <h4 class="product-catagory">{{ ucwords($data->brand->en_brand_name) ?? '' }}</h4>
                                         <input type="hidden" name="quantity" value="1" id="product_quantity">
                                         <h3 class="product-name"><a class="product-link"
                                                 href="/product/single/fit-flare-dress-2">{{ $data->en_name }}</a>
@@ -465,7 +465,7 @@
                                         </ul>
                                     </div>
                                     <div class="product-info text-center">
-                                        <h4 class="product-catagory">{{ ucwords($data->brand->en_brand_name) }}</h4>
+                                        <h4 class="product-catagory">{{ ucwords($data->brand->en_brand_name) ?? '' }}</h4>
                                         <input type="hidden" name="quantity" value="1" id="product_quantity">
                                         <h3 class="product-name"><a class="product-link"
                                                 href="/product/single/fit-flare-dress-2">{{ $data->en_name }}</a>

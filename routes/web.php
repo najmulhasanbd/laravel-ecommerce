@@ -21,6 +21,7 @@ Route::get('cart', [CartController::class, 'index'])->name('cart.index');
 
 //products
 Route::get('products', [ProductController::class, 'index'])->name('products.index');
+Route::get('product/{slug}', [ProductController::class, 'productdetails'])->name('products.details');
 
 //wishlist
 Route::get('wishlists', [WishlistController::class, 'index'])->name('wishlists.index');

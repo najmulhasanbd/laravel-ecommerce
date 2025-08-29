@@ -10,10 +10,17 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function index(){
-        $categories=Category::where('status',1)->get();
-        $brands=Brand::where('status',1)->get();
-        $products=Product::with('category','brand')->where('status',1)->get();
-        return view('frontend.products.index',compact('categories','brands','products'));
+    public function index()
+    {
+        $categories = Category::where('status', 1)->get();
+        $brands = Brand::where('status', 1)->get();
+        $products = Product::with('category', 'brand')->where('status', 1)->get();
+        return view('frontend.products.index', compact('categories', 'brands', 'products'));
+    }
+    public function productdetails($slug)
+    {
+        $details = Product::with('category')->where('slug', $slug)->first();
+        $relatedproduct = Product::where('category_id', $details->category_id)->where('id', '!=', $details->id)->where('status', 1)->latest()->limit(4)->get();
+        return view('frontend.products.details', compact('details','relatedproduct'));
     }
 }

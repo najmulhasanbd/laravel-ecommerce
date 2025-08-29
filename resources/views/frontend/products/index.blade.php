@@ -115,7 +115,6 @@
                                     </div>
                                     <span class="colors-count">2</span>
                                 </div>
-
                             </div>
                         </div>
                         <div class="single-widget size-widget">
@@ -164,7 +163,6 @@
                                 @endforeach
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <div class="col-xl-9 col-lg-8">
@@ -208,7 +206,8 @@
                                     <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6">
                                         <div class="single-grid-product">
                                             <div class="product-top">
-                                                <a href="/product/single/fit-flare-dress-2"><img class="product-thumbnal"
+                                                <a href="{{ route('products.details', $data->slug) }}"><img
+                                                        class="product-thumbnal"
                                                         src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
                                                         alt="product" /></a>
                                                 <div class="product-flags">
@@ -228,14 +227,14 @@
                                                 </ul>
                                             </div>
                                             <div class="product-info text-center">
-                                                <h4 class="product-catagory">{{ ucwords($data->brand->en_brand_name) }}
+                                                <h4 class="product-catagory">
+                                                    {{ ucwords($data->brand->en_brand_name) ?? '' }}
                                                 </h4>
                                                 <input type="hidden" name="quantity" value="1"
                                                     id="product_quantity">
                                                 <h3 class="product-name"><a class="product-link"
-                                                        href="/product/single/fit-flare-dress-2">{{ $data->en_name }}</a>
+                                                        href="{{ route('products.details', $data->slug) }}">{{ $data->en_name }}</a>
                                                 </h3>
-                                                <!-- This is server side code. User can not modify it. -->
                                                 <ul class="product-review">
                                                     <li class="review-item"><i class="flaticon-star"></i></li>
                                                     <li class="review-item"><i class="flaticon-star"></i></li>
