@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\CategoryController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\CompareController;
 use App\Http\Controllers\Frontend\PagesController;
@@ -30,6 +31,9 @@ Route::get('compares', [CompareController::class, 'index'])->name('compares.inde
 
 //subscribe
 Route::post('/subscribe', [SubscribeController::class, 'store'])->name('subscribe.store');
+
+//category
+Route::get('category-page',[CategoryController::class,'allcategory'])->name('category.all');
 
 
 //common pages route

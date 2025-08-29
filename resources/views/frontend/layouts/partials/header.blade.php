@@ -73,18 +73,10 @@
                                 <div class="search-wrap">
                                     <select class="form-select" name="category">
                                         <option value="" selected>Categories</option>
-                                        <option value="1">
-                                            Health Category
-                                        </option>
-                                        <option value="2">
-                                            Women Fashion
-                                        </option>
-                                        <option value="3">
-                                            Men Fashion
-                                        </option>
-                                        <option value="4">
-                                            Electronic
-                                        </option>
+                                        @foreach (get_categories() as $item)
+                                            <option value="{{ $item->id }}">{{ ucwords($item->en_category_name) }}
+                                            </option>
+                                        @endforeach
                                     </select>
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="search" name="search"

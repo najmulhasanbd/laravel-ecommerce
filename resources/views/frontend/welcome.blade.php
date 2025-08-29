@@ -95,101 +95,27 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <a class="single-categorie" href="/product/category/5">
-                        <div class="categorie-wrap">
-                            <div class="categorie-icon">
-                                <i class="icon flaticon-blazer"></i>
+                @foreach ($categories as $data)
+                    <div class="col-lg-4 col-md-6">
+                        <a class="single-categorie" href="/product/category/5">
+                            <div class="categorie-wrap">
+                                <div class="categorie-icon">
+                                    <img src="{{ asset('frontend/assets/images/products/tshirt.png') }}" alt="">
+                                </div>
+                                <div class="categorie-info">
+                                    <h3 class="categorie-name">{{ ucwords($data->en_category_name) }} </h3>
+                                    <h4 class="categorie-subtitle">
+                                        {{ $data->en_category_name }}</h4>
+                                </div>
                             </div>
-                            <div class="categorie-info">
-                                <h3 class="categorie-name">
-                                    Sports</h3>
-                                <h4 class="categorie-subtitle">
-                                    Sports products</h4>
-                            </div>
-                        </div>
-                        <i class="arrow flaticon-right-arrow"></i>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <a class="single-categorie" href="/product/category/6">
-                        <div class="categorie-wrap">
-                            <div class="categorie-icon">
-                                <i class="icon flaticon-blazer"></i>
-                            </div>
-                            <div class="categorie-info">
-                                <h3 class="categorie-name">
-                                    Blazers Collection</h3>
-                                <h4 class="categorie-subtitle">
-                                    Dress For Man And Women</h4>
-                            </div>
-                        </div>
-                        <i class="arrow flaticon-right-arrow"></i>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <a class="single-categorie" href="/product/category/7">
-                        <div class="categorie-wrap">
-                            <div class="categorie-icon">
-                                <i class="icon flaticon-hoodie"></i>
-                            </div>
-                            <div class="categorie-info">
-                                <h3 class="categorie-name">
-                                    Hoodie Collection</h3>
-                                <h4 class="categorie-subtitle">
-                                    Dress For Man And Women</h4>
-                            </div>
-                        </div>
-                        <i class="arrow flaticon-right-arrow"></i>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <a class="single-categorie" href="/product/category/8">
-                        <div class="categorie-wrap">
-                            <div class="categorie-icon">
-                                <i class="icon flaticon-long-sleeve"></i>
-                            </div>
-                            <div class="categorie-info">
-                                <h3 class="categorie-name">
-                                    Long Sleeve Wear</h3>
-                                <h4 class="categorie-subtitle">
-                                    Dress For Man And Women</h4>
-                            </div>
-                        </div>
-                        <i class="arrow flaticon-right-arrow"></i>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <a class="single-categorie" href="/product/category/9">
-                        <div class="categorie-wrap">
-                            <div class="categorie-icon">
-                                <i class="icon flaticon-waistcoat"></i>
-                            </div>
-                            <div class="categorie-info">
-                                <h3 class="categorie-name">
-                                    Waistcoart Collection</h3>
-                                <h4 class="categorie-subtitle">
-                                    Dress For Man And Women</h4>
-                            </div>
-                        </div>
-                        <i class="arrow flaticon-right-arrow"></i>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <a class="single-categorie" href="/product/category/10">
-                        <div class="categorie-wrap">
-                            <div class="categorie-icon">
-                                <i class="icon flaticon-long-sleeve"></i>
-                            </div>
-                            <div class="categorie-info">
-                                <h3 class="categorie-name">
-                                    Long Sleeve Wear</h3>
-                                <h4 class="categorie-subtitle">
-                                    Dress For Man And Women</h4>
-                            </div>
-                        </div>
-                        <i class="arrow flaticon-right-arrow"></i>
-                    </a>
+                            <i class="arrow flaticon-right-arrow"></i>
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+            <div class="row">
+                <div class="col-8 col-md-4 mx-auto">
+                    <a href="{{ route('category.all') }}" class="primary-btn">Show All Category</a>
                 </div>
             </div>
         </div>
@@ -215,183 +141,53 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="single-grid-product">
-                        <div class="product-top">
-                            <a href="/product/single/fit-flare-dress-2"><img class="product-thumbnal"
-                                    src="{{ asset('frontend') }}/assets/images/products/tshirt.png" alt="product" /></a>
-                            <div class="product-flags">
-                                <span class="product-flag sale">NEW</span>
-                                <span class="product-flag discount">-10.00</span>
+                @foreach ($products as $data)
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="single-grid-product">
+                            <div class="product-top">
+                                <a href="/product/single/fit-flare-dress-2"><img class="product-thumbnal"
+                                        src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
+                                        alt="product" /></a>
+                                <div class="product-flags">
+                                    <span class="product-flag sale">NEW</span>
+                                    <span class="product-flag discount">-10.00</span>
+                                </div>
+                                <ul class="prdouct-btn-wrapper">
+                                    <li class="single-product-btn">
+                                        <a class="product-btn CompareList" data-id="11" title="Add To Compare"><i
+                                                class="icon flaticon-bar-chart"></i></a>
+                                    </li>
+                                    <li class="single-product-btn">
+                                        <a class="product-btn MyWishList" data-id="11" title="Add To Wishlist"><i
+                                                class="icon flaticon-like"></i></a>
+                                    </li>
+                                </ul>
                             </div>
-                            <ul class="prdouct-btn-wrapper">
-                                <li class="single-product-btn">
-                                    <a class="product-btn CompareList" data-id="11" title="Add To Compare"><i
-                                            class="icon flaticon-bar-chart"></i></a>
-                                </li>
-                                <li class="single-product-btn">
-                                    <a class="product-btn MyWishList" data-id="11" title="Add To Wishlist"><i
-                                            class="icon flaticon-like"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="product-info text-center">
-                            <h4 class="product-catagory">ELLA - HALOTHEMES</h4>
-                            <input type="hidden" name="quantity" value="1" id="product_quantity">
-                            <h3 class="product-name"><a class="product-link"
-                                    href="/product/single/fit-flare-dress-2">Fit-Flare Dress</a>
-                            </h3>
-                            <!-- This is server side code. User can not modify it. -->
-                            <ul class="product-review">
-                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                <li class="review-item"><i class="flaticon-star"></i></li>
-                            </ul>
-                            <div class="product-price">
-                                <span class="regular-price">$ 200</span>
-                                <span class="price">$ 180</span>
+                            <div class="product-info text-center">
+                                <h4 class="product-catagory">{{ $data->category->en_category_name ?? '' }}</h4>
+                                <input type="hidden" name="quantity" value="1" id="product_quantity">
+                                <h3 class="product-name"><a class="product-link"
+                                        href="/product/single/fit-flare-dress-2">{{ $data->en_name }}</a>
+                                </h3>
+                                <!-- This is server side code. User can not modify it. -->
+                                <ul class="product-review">
+                                    <li class="review-item"><i class="flaticon-star"></i></li>
+                                    <li class="review-item"><i class="flaticon-star"></i></li>
+                                    <li class="review-item"><i class="flaticon-star"></i></li>
+                                    <li class="review-item"><i class="flaticon-star"></i></li>
+                                    <li class="review-item"><i class="flaticon-star"></i></li>
+                                </ul>
+                                <div class="product-price">
+                                    <span class="regular-price">$ 200</span>
+                                    <span class="price">$ 180</span>
+                                </div>
+                                <a href="javascript:void(0)" title="Add To Cart" class="add-cart addCart"
+                                    data-id="11">Add
+                                    To Cart <i class="icon fas fa-plus-circle"></i></a>
                             </div>
-                            <a href="javascript:void(0)" title="Add To Cart" class="add-cart addCart" data-id="11">Add
-                                To Cart <i class="icon fas fa-plus-circle"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="single-grid-product">
-                        <div class="product-top">
-                            <a href="product-details.html"><img class="product-thumbnal"
-                                    src="{{ asset('frontend') }}/assets/images/products/tshirt.png" alt="product" /></a>
-                            <div class="product-flags">
-                                <span class="product-flag sale">HOT</span>
-                                <span class="product-flag discount">-10.00</span>
-                            </div>
-                            <ul class="prdouct-btn-wrapper">
-                                <li class="single-product-btn">
-                                    <a class="product-btn CompareList" data-id="7" title="Add To Compare"><i
-                                            class="icon flaticon-bar-chart"></i></a>
-                                </li>
-                                <li class="single-product-btn">
-                                    <a class="product-btn MyWishList" data-id="7" title="Add To Wishlist"><i
-                                            class="icon flaticon-like"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="product-info text-center">
-                            <h4 class="product-catagory">ELLA - HALOTHEMES</h4>
-                            <input type="hidden" name="quantity" value="1" id="product_quantity">
-                            <h3 class="product-name"><a class="product-link" href="product-details.html">Tailored Fit
-                                    Mesh-Panel</a>
-                            </h3>
-                            <!-- This is server side code. User can not modify it. -->
-                            <ul class="product-review">
-                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                <li class="review-item"><i class="flaticon-star"></i></li>
-                            </ul>
-                            <div class="product-price">
-                                <span class="regular-price">$ 500</span>
-                                <span class="price">$ 450</span>
-                            </div>
-                            <a href="javascript:void(0)" title="Add To Cart" class="add-cart addCart" data-id="7">Add
-                                To
-                                Cart <i class="icon fas fa-plus-circle"></i></a>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="single-grid-product">
-                        <div class="product-top">
-                            <a href="/product/single/rosmo-namino-2"><img class="product-thumbnal"
-                                    src="{{ asset('frontend') }}/assets/images/products/tshirt.png" alt="product" /></a>
-                            <div class="product-flags">
-                                <span class="product-flag sale">HOT</span>
-                                <span class="product-flag discount">-10.00</span>
-                            </div>
-                            <ul class="prdouct-btn-wrapper">
-                                <li class="single-product-btn">
-                                    <a class="product-btn CompareList" data-id="8" title="Add To Compare"><i
-                                            class="icon flaticon-bar-chart"></i></a>
-                                </li>
-                                <li class="single-product-btn">
-                                    <a class="product-btn MyWishList" data-id="8" title="Add To Wishlist"><i
-                                            class="icon flaticon-like"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="product-info text-center">
-                            <h4 class="product-catagory">ELLA - HALOTHEMES</h4>
-                            <input type="hidden" name="quantity" value="1" id="product_quantity">
-                            <h3 class="product-name"><a class="product-link" href="/product/single/rosmo-namino-2">Rosmo
-                                    Namino</a>
-                            </h3>
-                            <!-- This is server side code. User can not modify it. -->
-                            <ul class="product-review">
-                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                <li class="review-item"><i class="flaticon-star"></i></li>
-                            </ul>
-                            <div class="product-price">
-                                <span class="regular-price">$ 500</span>
-                                <span class="price">$ 450</span>
-                            </div>
-                            <a href="javascript:void(0)" title="Add To Cart" class="add-cart addCart" data-id="8">Add
-                                To
-                                Cart <i class="icon fas fa-plus-circle"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="single-grid-product">
-                        <div class="product-top">
-                            <a href="/product/single/Best-t-Shirt-for-male"><img class="product-thumbnal"
-                                    src="{{ asset('frontend') }}/assets/images/products/tshirt.png" alt="product" /></a>
-                            <div class="product-flags">
-                                <span class="product-flag sale">NEW</span>
-                                <span class="product-flag discount">-10.00</span>
-                            </div>
-                            <ul class="prdouct-btn-wrapper">
-                                <li class="single-product-btn">
-                                    <a class="product-btn CompareList" data-id="9" title="Add To Compare"><i
-                                            class="icon flaticon-bar-chart"></i></a>
-                                </li>
-                                <li class="single-product-btn">
-                                    <a class="product-btn MyWishList" data-id="9" title="Add To Wishlist"><i
-                                            class="icon flaticon-like"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="product-info text-center">
-                            <h4 class="product-catagory">HOT - COLLECTION</h4>
-                            <input type="hidden" name="quantity" value="1" id="product_quantity">
-                            <h3 class="product-name"><a class="product-link"
-                                    href="/product/single/Best-t-Shirt-for-male">Best T-Shirt for
-                                    Male</a>
-                            </h3>
-                            <!-- This is server side code. User can not modify it. -->
-                            <ul class="product-review">
-                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                <li class="review-item"><i class="flaticon-star"></i></li>
-                            </ul>
-                            <div class="product-price">
-                                <span class="regular-price">$ 500</span>
-                                <span class="price">$ 450</span>
-                            </div>
-                            <a href="javascript:void(0)" title="Add To Cart" class="add-cart addCart" data-id="9">Add
-                                To
-                                Cart <i class="icon fas fa-plus-circle"></i></a>
-                        </div>
-                    </div>
-                </div>
-
+                @endforeach
             </div>
         </div>
     </div>
@@ -496,732 +292,202 @@
                 <div class="tab-pane fade show active" id="new-arrival" role="tabpanel"
                     aria-labelledby="new-arrival-tab">
                     <div class="row">
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <div class="single-grid-product">
-                                <div class="product-top">
-                                    <a href="/product/single/fit-flare-dress-2"><img class="product-thumbnal"
-                                            src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
-                                            alt="product" /></a>
-                                    <div class="product-flags">
-                                        <span class="product-flag sale">NEW</span>
-                                        <span class="product-flag discount">-10.00</span>
+                        @foreach ($new_arrivalproducts as $data)
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <div class="single-grid-product">
+                                    <div class="product-top">
+                                        <a href="/product/single/fit-flare-dress-2"><img class="product-thumbnal"
+                                                src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
+                                                alt="product" /></a>
+                                        <div class="product-flags">
+                                            <span class="product-flag sale">NEW</span>
+                                            <span class="product-flag discount">-10.00</span>
+                                        </div>
+                                        <ul class="prdouct-btn-wrapper">
+                                            <li class="single-product-btn">
+                                                <a class="product-btn CompareList" data-id="11"
+                                                    title="Add To Compare"><i class="icon flaticon-bar-chart"></i></a>
+                                            </li>
+                                            <li class="single-product-btn">
+                                                <a class="product-btn MyWishList" data-id="11"
+                                                    title="Add To Wishlist"><i class="icon flaticon-like"></i></a>
+                                            </li>
+                                        </ul>
                                     </div>
-                                    <ul class="prdouct-btn-wrapper">
-                                        <li class="single-product-btn">
-                                            <a class="product-btn CompareList" data-id="11" title="Add To Compare"><i
-                                                    class="icon flaticon-bar-chart"></i></a>
-                                        </li>
-                                        <li class="single-product-btn">
-                                            <a class="product-btn MyWishList" data-id="11" title="Add To Wishlist"><i
-                                                    class="icon flaticon-like"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="product-info text-center">
-                                    <h4 class="product-catagory">ELLA - HALOTHEMES</h4>
-                                    <input type="hidden" name="quantity" value="1" id="product_quantity">
-                                    <h3 class="product-name"><a class="product-link"
-                                            href="/product/single/fit-flare-dress-2">Fit-Flare
-                                            Dress</a>
-                                    </h3>
-                                    <!-- This is server side code. User can not modify it. -->
-                                    <ul class="product-review">
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                    </ul>
-                                    <div class="product-price">
-                                        <span class="regular-price">$ 200</span>
-                                        <span class="price">$ 180</span>
+                                    <div class="product-info text-center">
+                                        <h4 class="product-catagory">{{ ucwords($data->brand->en_brand_name) }}</h4>
+                                        <input type="hidden" name="quantity" value="1" id="product_quantity">
+                                        <h3 class="product-name"><a class="product-link"
+                                                href="/product/single/fit-flare-dress-2">{{ $data->en_name }}</a>
+                                        </h3>
+                                        <!-- This is server side code. User can not modify it. -->
+                                        <ul class="product-review">
+                                            <li class="review-item"><i class="flaticon-star"></i></li>
+                                            <li class="review-item"><i class="flaticon-star"></i></li>
+                                            <li class="review-item"><i class="flaticon-star"></i></li>
+                                            <li class="review-item"><i class="flaticon-star"></i></li>
+                                            <li class="review-item"><i class="flaticon-star"></i></li>
+                                        </ul>
+                                        <div class="product-price">
+                                            <span class="regular-price">$ 200</span>
+                                            <span class="price">$ 180</span>
+                                        </div>
+                                        <a href="javascript:void(0)" title="Add To Cart" class="add-cart addCart"
+                                            data-id="11">Add To Cart <i class="icon fas fa-plus-circle"></i></a>
                                     </div>
-                                    <a href="javascript:void(0)" title="Add To Cart" class="add-cart addCart"
-                                        data-id="11">Add To Cart <i class="icon fas fa-plus-circle"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <div class="single-grid-product">
-                                <div class="product-top">
-                                    <a href="product-details.html"><img class="product-thumbnal"
-                                            src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
-                                            alt="product" /></a>
-                                    <div class="product-flags">
-                                        <span class="product-flag sale">HOT</span>
-                                        <span class="product-flag discount">-10.00</span>
-                                    </div>
-                                    <ul class="prdouct-btn-wrapper">
-                                        <li class="single-product-btn">
-                                            <a class="product-btn CompareList" data-id="7" title="Add To Compare"><i
-                                                    class="icon flaticon-bar-chart"></i></a>
-                                        </li>
-                                        <li class="single-product-btn">
-                                            <a class="product-btn MyWishList" data-id="7" title="Add To Wishlist"><i
-                                                    class="icon flaticon-like"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="product-info text-center">
-                                    <h4 class="product-catagory">ELLA - HALOTHEMES</h4>
-                                    <input type="hidden" name="quantity" value="1" id="product_quantity">
-                                    <h3 class="product-name"><a class="product-link" href="product-details.html">Tailored
-                                            Fit Mesh-Panel</a>
-                                    </h3>
-                                    <!-- This is server side code. User can not modify it. -->
-                                    <ul class="product-review">
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                    </ul>
-                                    <div class="product-price">
-                                        <span class="regular-price">$ 500</span>
-                                        <span class="price">$ 450</span>
-                                    </div>
-                                    <a href="javascript:void(0)" title="Add To Cart" class="add-cart addCart"
-                                        data-id="7">Add To Cart <i class="icon fas fa-plus-circle"></i></a>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <div class="single-grid-product">
-                                <div class="product-top">
-                                    <a href="/product/single/rosmo-namino-2"><img class="product-thumbnal"
-                                            src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
-                                            alt="product" /></a>
-                                    <div class="product-flags">
-                                        <span class="product-flag sale">HOT</span>
-                                        <span class="product-flag discount">-10.00</span>
-                                    </div>
-                                    <ul class="prdouct-btn-wrapper">
-                                        <li class="single-product-btn">
-                                            <a class="product-btn CompareList" data-id="8" title="Add To Compare"><i
-                                                    class="icon flaticon-bar-chart"></i></a>
-                                        </li>
-                                        <li class="single-product-btn">
-                                            <a class="product-btn MyWishList" data-id="8" title="Add To Wishlist"><i
-                                                    class="icon flaticon-like"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="product-info text-center">
-                                    <h4 class="product-catagory">ELLA - HALOTHEMES</h4>
-                                    <input type="hidden" name="quantity" value="1" id="product_quantity">
-                                    <h3 class="product-name"><a class="product-link"
-                                            href="/product/single/rosmo-namino-2">Rosmo Namino</a>
-                                    </h3>
-                                    <!-- This is server side code. User can not modify it. -->
-                                    <ul class="product-review">
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                    </ul>
-                                    <div class="product-price">
-                                        <span class="regular-price">$ 500</span>
-                                        <span class="price">$ 450</span>
-                                    </div>
-                                    <a href="javascript:void(0)" title="Add To Cart" class="add-cart addCart"
-                                        data-id="8">Add To Cart <i class="icon fas fa-plus-circle"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <div class="single-grid-product">
-                                <div class="product-top">
-                                    <a href="/product/single/Best-t-Shirt-for-male"><img class="product-thumbnal"
-                                            src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
-                                            alt="product" /></a>
-                                    <div class="product-flags">
-                                        <span class="product-flag sale">NEW</span>
-                                        <span class="product-flag discount">-10.00</span>
-                                    </div>
-                                    <ul class="prdouct-btn-wrapper">
-                                        <li class="single-product-btn">
-                                            <a class="product-btn CompareList" data-id="9" title="Add To Compare"><i
-                                                    class="icon flaticon-bar-chart"></i></a>
-                                        </li>
-                                        <li class="single-product-btn">
-                                            <a class="product-btn MyWishList" data-id="9" title="Add To Wishlist"><i
-                                                    class="icon flaticon-like"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="product-info text-center">
-                                    <h4 class="product-catagory">HOT - COLLECTION</h4>
-                                    <input type="hidden" name="quantity" value="1" id="product_quantity">
-                                    <h3 class="product-name"><a class="product-link"
-                                            href="/product/single/Best-t-Shirt-for-male">Best
-                                            T-Shirt for Male</a>
-                                    </h3>
-                                    <!-- This is server side code. User can not modify it. -->
-                                    <ul class="product-review">
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                    </ul>
-                                    <div class="product-price">
-                                        <span class="regular-price">$ 500</span>
-                                        <span class="price">$ 450</span>
-                                    </div>
-                                    <a href="javascript:void(0)" title="Add To Cart" class="add-cart addCart"
-                                        data-id="9">Add To Cart <i class="icon fas fa-plus-circle"></i></a>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="tab-pane fade " id="best-selling" role="tabpanel" aria-labelledby="best-selling-tab">
                     <div class="row">
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <div class="single-grid-product">
-                                <div class="product-top">
-                                    <a href="/product/single/fit-flare-dress-2"><img class="product-thumbnal"
-                                            src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
-                                            alt="product" /></a>
-                                    <div class="product-flags">
-                                        <span class="product-flag sale">NEW</span>
-                                        <span class="product-flag discount">-10.00</span>
+                        @foreach ($best_sellingproducts as $data)
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <div class="single-grid-product">
+                                    <div class="product-top">
+                                        <a href="/product/single/fit-flare-dress-2"><img class="product-thumbnal"
+                                                src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
+                                                alt="product" /></a>
+                                        <div class="product-flags">
+                                            <span class="product-flag sale">NEW</span>
+                                            <span class="product-flag discount">-10.00</span>
+                                        </div>
+                                        <ul class="prdouct-btn-wrapper">
+                                            <li class="single-product-btn">
+                                                <a class="product-btn CompareList" data-id="11"
+                                                    title="Add To Compare"><i class="icon flaticon-bar-chart"></i></a>
+                                            </li>
+                                            <li class="single-product-btn">
+                                                <a class="product-btn MyWishList" data-id="11"
+                                                    title="Add To Wishlist"><i class="icon flaticon-like"></i></a>
+                                            </li>
+                                        </ul>
                                     </div>
-                                    <ul class="prdouct-btn-wrapper">
-                                        <li class="single-product-btn">
-                                            <a class="product-btn CompareList" data-id="11" title="Add To Compare"><i
-                                                    class="icon flaticon-bar-chart"></i></a>
-                                        </li>
-                                        <li class="single-product-btn">
-                                            <a class="product-btn MyWishList" data-id="11" title="Add To Wishlist"><i
-                                                    class="icon flaticon-like"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="product-info text-center">
-                                    <h4 class="product-catagory">ELLA - HALOTHEMES</h4>
-                                    <input type="hidden" name="quantity" value="1" id="product_quantity">
-                                    <h3 class="product-name"><a class="product-link"
-                                            href="/product/single/fit-flare-dress-2">Fit-Flare
-                                            Dress</a>
-                                    </h3>
-                                    <!-- This is server side code. User can not modify it. -->
-                                    <ul class="product-review">
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                    </ul>
-                                    <div class="product-price">
-                                        <span class="regular-price">$ 200</span>
-                                        <span class="price">$ 180</span>
+                                    <div class="product-info text-center">
+                                        <h4 class="product-catagory">{{ ucwords($data->brand->en_brand_name) }}</h4>
+                                        <input type="hidden" name="quantity" value="1" id="product_quantity">
+                                        <h3 class="product-name"><a class="product-link"
+                                                href="/product/single/fit-flare-dress-2">{{ $data->en_name }}</a>
+                                        </h3>
+                                        <!-- This is server side code. User can not modify it. -->
+                                        <ul class="product-review">
+                                            <li class="review-item"><i class="flaticon-star"></i></li>
+                                            <li class="review-item"><i class="flaticon-star"></i></li>
+                                            <li class="review-item"><i class="flaticon-star"></i></li>
+                                            <li class="review-item"><i class="flaticon-star"></i></li>
+                                            <li class="review-item"><i class="flaticon-star"></i></li>
+                                        </ul>
+                                        <div class="product-price">
+                                            <span class="regular-price">$ 200</span>
+                                            <span class="price">$ 180</span>
+                                        </div>
+                                        <a href="javascript:void(0)" title="Add To Cart" class="add-cart addCart"
+                                            data-id="11">Add To Cart <i class="icon fas fa-plus-circle"></i></a>
                                     </div>
-                                    <a href="javascript:void(0)" title="Add To Cart" class="add-cart addCart"
-                                        data-id="11">Add To Cart <i class="icon fas fa-plus-circle"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <div class="single-grid-product">
-                                <div class="product-top">
-                                    <a href="product-details.html"><img class="product-thumbnal"
-                                            src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
-                                            alt="product" /></a>
-                                    <div class="product-flags">
-                                        <span class="product-flag sale">HOT</span>
-                                        <span class="product-flag discount">-10.00</span>
-                                    </div>
-                                    <ul class="prdouct-btn-wrapper">
-                                        <li class="single-product-btn">
-                                            <a class="product-btn CompareList" data-id="7" title="Add To Compare"><i
-                                                    class="icon flaticon-bar-chart"></i></a>
-                                        </li>
-                                        <li class="single-product-btn">
-                                            <a class="product-btn MyWishList" data-id="7" title="Add To Wishlist"><i
-                                                    class="icon flaticon-like"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="product-info text-center">
-                                    <h4 class="product-catagory">ELLA - HALOTHEMES</h4>
-                                    <input type="hidden" name="quantity" value="1" id="product_quantity">
-                                    <h3 class="product-name"><a class="product-link" href="product-details.html">Tailored
-                                            Fit Mesh-Panel</a>
-                                    </h3>
-                                    <!-- This is server side code. User can not modify it. -->
-                                    <ul class="product-review">
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                    </ul>
-                                    <div class="product-price">
-                                        <span class="regular-price">$ 500</span>
-                                        <span class="price">$ 450</span>
-                                    </div>
-                                    <a href="javascript:void(0)" title="Add To Cart" class="add-cart addCart"
-                                        data-id="7">Add To Cart <i class="icon fas fa-plus-circle"></i></a>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <div class="single-grid-product">
-                                <div class="product-top">
-                                    <a href="/product/single/rosmo-namino-2"><img class="product-thumbnal"
-                                            src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
-                                            alt="product" /></a>
-                                    <div class="product-flags">
-                                        <span class="product-flag sale">HOT</span>
-                                        <span class="product-flag discount">-10.00</span>
-                                    </div>
-                                    <ul class="prdouct-btn-wrapper">
-                                        <li class="single-product-btn">
-                                            <a class="product-btn CompareList" data-id="8" title="Add To Compare"><i
-                                                    class="icon flaticon-bar-chart"></i></a>
-                                        </li>
-                                        <li class="single-product-btn">
-                                            <a class="product-btn MyWishList" data-id="8" title="Add To Wishlist"><i
-                                                    class="icon flaticon-like"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="product-info text-center">
-                                    <h4 class="product-catagory">ELLA - HALOTHEMES</h4>
-                                    <input type="hidden" name="quantity" value="1" id="product_quantity">
-                                    <h3 class="product-name"><a class="product-link"
-                                            href="/product/single/rosmo-namino-2">Rosmo Namino</a>
-                                    </h3>
-                                    <!-- This is server side code. User can not modify it. -->
-                                    <ul class="product-review">
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                    </ul>
-                                    <div class="product-price">
-                                        <span class="regular-price">$ 500</span>
-                                        <span class="price">$ 450</span>
-                                    </div>
-                                    <a href="javascript:void(0)" title="Add To Cart" class="add-cart addCart"
-                                        data-id="8">Add To Cart <i class="icon fas fa-plus-circle"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <div class="single-grid-product">
-                                <div class="product-top">
-                                    <a href="/product/single/Best-t-Shirt-for-male"><img class="product-thumbnal"
-                                            src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
-                                            alt="product" /></a>
-                                    <div class="product-flags">
-                                        <span class="product-flag sale">NEW</span>
-                                        <span class="product-flag discount">-10.00</span>
-                                    </div>
-                                    <ul class="prdouct-btn-wrapper">
-                                        <li class="single-product-btn">
-                                            <a class="product-btn CompareList" data-id="9" title="Add To Compare"><i
-                                                    class="icon flaticon-bar-chart"></i></a>
-                                        </li>
-                                        <li class="single-product-btn">
-                                            <a class="product-btn MyWishList" data-id="9" title="Add To Wishlist"><i
-                                                    class="icon flaticon-like"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="product-info text-center">
-                                    <h4 class="product-catagory">HOT - COLLECTION</h4>
-                                    <input type="hidden" name="quantity" value="1" id="product_quantity">
-                                    <h3 class="product-name"><a class="product-link"
-                                            href="/product/single/Best-t-Shirt-for-male">Best
-                                            T-Shirt for Male</a>
-                                    </h3>
-                                    <!-- This is server side code. User can not modify it. -->
-                                    <ul class="product-review">
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                    </ul>
-                                    <div class="product-price">
-                                        <span class="regular-price">$ 500</span>
-                                        <span class="price">$ 450</span>
-                                    </div>
-                                    <a href="javascript:void(0)" title="Add To Cart" class="add-cart addCart"
-                                        data-id="9">Add To Cart <i class="icon fas fa-plus-circle"></i></a>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="tab-pane fade " id="on-sell" role="tabpanel" aria-labelledby="on-sell-tab">
                     <div class="row">
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <div class="single-grid-product">
-                                <div class="product-top">
-                                    <a href="/product/single/fit-flare-dress-2}"><img class="product-thumbnal"
-                                            src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
-                                            alt="product" /></a>
-                                    <div class="product-flags">
-                                        <span class="product-flag sale">NEW</span>
-                                        <span class="product-flag discount">-10.00</span>
+                        @foreach ($onsaleproducts as $data)
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <div class="single-grid-product">
+                                    <div class="product-top">
+                                        <a href="/product/single/fit-flare-dress-2"><img class="product-thumbnal"
+                                                src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
+                                                alt="product" /></a>
+                                        <div class="product-flags">
+                                            <span class="product-flag sale">NEW</span>
+                                            <span class="product-flag discount">-10.00</span>
+                                        </div>
+                                        <ul class="prdouct-btn-wrapper">
+                                            <li class="single-product-btn">
+                                                <a class="product-btn CompareList" data-id="11"
+                                                    title="Add To Compare"><i class="icon flaticon-bar-chart"></i></a>
+                                            </li>
+                                            <li class="single-product-btn">
+                                                <a class="product-btn MyWishList" data-id="11"
+                                                    title="Add To Wishlist"><i class="icon flaticon-like"></i></a>
+                                            </li>
+                                        </ul>
                                     </div>
-                                    <ul class="prdouct-btn-wrapper">
-                                        <li class="single-product-btn">
-                                            <a class="product-btn CompareList" data-id="11" title="Add to compare"><i
-                                                    class="icon flaticon-bar-chart"></i></a>
-                                        </li>
-                                        <li class="single-product-btn">
-                                            <a class="product-btn MyWishList" data-id="11" title="Add to wishlist"><i
-                                                    class="icon flaticon-like"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="product-info text-center">
-                                    <h4 class="product-catagory">ELLA - HALOTHEMES</h4>
-                                    <input type="hidden" name="quantity" value="1" id="product_quantity">
-                                    <h3 class="product-name"><a class="product-link"
-                                            href="/product/single/fit-flare-dress-2">Fit-Flare
-                                            Dress</a>
-                                    </h3>
-                                    <!-- This is server side code. User can not modify it. -->
-                                    <ul class="product-review">
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                    </ul>
-                                    <div class="product-price">
-                                        <span class="regular-price">$ 200</span>
-                                        <span class="price">$ 180</span>
+                                    <div class="product-info text-center">
+                                        <h4 class="product-catagory">{{ ucwords($data->brand->en_brand_name) }}</h4>
+                                        <input type="hidden" name="quantity" value="1" id="product_quantity">
+                                        <h3 class="product-name"><a class="product-link"
+                                                href="/product/single/fit-flare-dress-2">{{ $data->en_name }}</a>
+                                        </h3>
+                                        <!-- This is server side code. User can not modify it. -->
+                                        <ul class="product-review">
+                                            <li class="review-item"><i class="flaticon-star"></i></li>
+                                            <li class="review-item"><i class="flaticon-star"></i></li>
+                                            <li class="review-item"><i class="flaticon-star"></i></li>
+                                            <li class="review-item"><i class="flaticon-star"></i></li>
+                                            <li class="review-item"><i class="flaticon-star"></i></li>
+                                        </ul>
+                                        <div class="product-price">
+                                            <span class="regular-price">$ 200</span>
+                                            <span class="price">$ 180</span>
+                                        </div>
+                                        <a href="javascript:void(0)" title="Add To Cart" class="add-cart addCart"
+                                            data-id="11">Add To Cart <i class="icon fas fa-plus-circle"></i></a>
                                     </div>
-                                    <a href="javascript:void(0)" title="Add To Cart" class="add-cart addCart"
-                                        data-id="11">Add To Cart <i class="icon fas fa-plus-circle"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <div class="single-grid-product">
-                                <div class="product-top">
-                                    <a href="product-details.html}"><img class="product-thumbnal"
-                                            src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
-                                            alt="product" /></a>
-                                    <div class="product-flags">
-                                        <span class="product-flag sale">HOT</span>
-                                        <span class="product-flag discount">-10.00</span>
-                                    </div>
-                                    <ul class="prdouct-btn-wrapper">
-                                        <li class="single-product-btn">
-                                            <a class="product-btn CompareList" data-id="7" title="Add to compare"><i
-                                                    class="icon flaticon-bar-chart"></i></a>
-                                        </li>
-                                        <li class="single-product-btn">
-                                            <a class="product-btn MyWishList" data-id="7" title="Add to wishlist"><i
-                                                    class="icon flaticon-like"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="product-info text-center">
-                                    <h4 class="product-catagory">ELLA - HALOTHEMES</h4>
-                                    <input type="hidden" name="quantity" value="1" id="product_quantity">
-                                    <h3 class="product-name"><a class="product-link" href="product-details.html">Tailored
-                                            Fit Mesh-Panel</a>
-                                    </h3>
-                                    <!-- This is server side code. User can not modify it. -->
-                                    <ul class="product-review">
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                    </ul>
-                                    <div class="product-price">
-                                        <span class="regular-price">$ 500</span>
-                                        <span class="price">$ 450</span>
-                                    </div>
-                                    <a href="javascript:void(0)" title="Add To Cart" class="add-cart addCart"
-                                        data-id="7">Add To Cart <i class="icon fas fa-plus-circle"></i></a>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <div class="single-grid-product">
-                                <div class="product-top">
-                                    <a href="/product/single/rosmo-namino-2}"><img class="product-thumbnal"
-                                            src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
-                                            alt="product" /></a>
-                                    <div class="product-flags">
-                                        <span class="product-flag sale">HOT</span>
-                                        <span class="product-flag discount">-10.00</span>
-                                    </div>
-                                    <ul class="prdouct-btn-wrapper">
-                                        <li class="single-product-btn">
-                                            <a class="product-btn CompareList" data-id="8" title="Add to compare"><i
-                                                    class="icon flaticon-bar-chart"></i></a>
-                                        </li>
-                                        <li class="single-product-btn">
-                                            <a class="product-btn MyWishList" data-id="8" title="Add to wishlist"><i
-                                                    class="icon flaticon-like"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="product-info text-center">
-                                    <h4 class="product-catagory">ELLA - HALOTHEMES</h4>
-                                    <input type="hidden" name="quantity" value="1" id="product_quantity">
-                                    <h3 class="product-name"><a class="product-link"
-                                            href="/product/single/rosmo-namino-2">Rosmo Namino</a>
-                                    </h3>
-                                    <!-- This is server side code. User can not modify it. -->
-                                    <ul class="product-review">
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                    </ul>
-                                    <div class="product-price">
-                                        <span class="regular-price">$ 500</span>
-                                        <span class="price">$ 450</span>
-                                    </div>
-                                    <a href="javascript:void(0)" title="Add To Cart" class="add-cart addCart"
-                                        data-id="8">Add To Cart <i class="icon fas fa-plus-circle"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <div class="single-grid-product">
-                                <div class="product-top">
-                                    <a href="/product/single/Best-t-Shirt-for-male}"><img class="product-thumbnal"
-                                            src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
-                                            alt="product" /></a>
-                                    <div class="product-flags">
-                                        <span class="product-flag sale">NEW</span>
-                                        <span class="product-flag discount">-10.00</span>
-                                    </div>
-                                    <ul class="prdouct-btn-wrapper">
-                                        <li class="single-product-btn">
-                                            <a class="product-btn CompareList" data-id="9" title="Add to compare"><i
-                                                    class="icon flaticon-bar-chart"></i></a>
-                                        </li>
-                                        <li class="single-product-btn">
-                                            <a class="product-btn MyWishList" data-id="9" title="Add to wishlist"><i
-                                                    class="icon flaticon-like"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="product-info text-center">
-                                    <h4 class="product-catagory">HOT - COLLECTION</h4>
-                                    <input type="hidden" name="quantity" value="1" id="product_quantity">
-                                    <h3 class="product-name"><a class="product-link"
-                                            href="/product/single/Best-t-Shirt-for-male">Best
-                                            T-Shirt for Male</a>
-                                    </h3>
-                                    <!-- This is server side code. User can not modify it. -->
-                                    <ul class="product-review">
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                    </ul>
-                                    <div class="product-price">
-                                        <span class="regular-price">$ 500</span>
-                                        <span class="price">$ 450</span>
-                                    </div>
-                                    <a href="javascript:void(0)" title="Add To Cart" class="add-cart addCart"
-                                        data-id="9">Add To Cart <i class="icon fas fa-plus-circle"></i></a>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
-                <div class="tab-pane fade " id="featured-items" role="tabpanel"
-                    aria-labelledby="featured-items-tab">
+                <div class="tab-pane fade " id="featured-items" role="tabpanel" aria-labelledby="featured-items-tab">
                     <div class="row">
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <div class="single-grid-product">
-                                <div class="product-top">
-                                    <a href="/product/single/fit-flare-dress-2"><img class="product-thumbnal"
-                                            src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
-                                            alt="product" /></a>
-                                    <div class="product-flags">
-                                        <span class="product-flag sale">NEW</span>
-                                        <span class="product-flag discount">-10.00</span>
+                        @foreach ($featuredproducts as $data)
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <div class="single-grid-product">
+                                    <div class="product-top">
+                                        <a href="/product/single/fit-flare-dress-2"><img class="product-thumbnal"
+                                                src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
+                                                alt="product" /></a>
+                                        <div class="product-flags">
+                                            <span class="product-flag sale">NEW</span>
+                                            <span class="product-flag discount">-10.00</span>
+                                        </div>
+                                        <ul class="prdouct-btn-wrapper">
+                                            <li class="single-product-btn">
+                                                <a class="product-btn CompareList" data-id="11"
+                                                    title="Add To Compare"><i class="icon flaticon-bar-chart"></i></a>
+                                            </li>
+                                            <li class="single-product-btn">
+                                                <a class="product-btn MyWishList" data-id="11"
+                                                    title="Add To Wishlist"><i class="icon flaticon-like"></i></a>
+                                            </li>
+                                        </ul>
                                     </div>
-                                    <ul class="prdouct-btn-wrapper">
-                                        <li class="single-product-btn">
-                                            <a class="product-btn CompareList" data-id="11"
-                                                title="Add to compare"><i class="icon flaticon-bar-chart"></i></a>
-                                        </li>
-                                        <li class="single-product-btn">
-                                            <a class="product-btn MyWishList" data-id="11"
-                                                title="Add to wishlist"><i class="icon flaticon-like"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="product-info text-center">
-                                    <h4 class="product-catagory">ELLA - HALOTHEMES</h4>
-                                    <input type="hidden" name="quantity" value="1" id="product_quantity">
-                                    <h3 class="product-name"><a class="product-link"
-                                            href="/product/single/fit-flare-dress-2">Fit-Flare
-                                            Dress</a>
-                                    </h3>
-                                    <!-- This is server side code. User can not modify it. -->
-                                    <ul class="product-review">
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                    </ul>
-                                    <div class="product-price">
-                                        <span class="regular-price">$ 200</span>
-                                        <span class="price">$ 180</span>
+                                    <div class="product-info text-center">
+                                        <h4 class="product-catagory">{{ ucwords($data->brand->en_brand_name) }}</h4>
+                                        <input type="hidden" name="quantity" value="1" id="product_quantity">
+                                        <h3 class="product-name"><a class="product-link"
+                                                href="/product/single/fit-flare-dress-2">{{ $data->en_name }}</a>
+                                        </h3>
+                                        <!-- This is server side code. User can not modify it. -->
+                                        <ul class="product-review">
+                                            <li class="review-item"><i class="flaticon-star"></i></li>
+                                            <li class="review-item"><i class="flaticon-star"></i></li>
+                                            <li class="review-item"><i class="flaticon-star"></i></li>
+                                            <li class="review-item"><i class="flaticon-star"></i></li>
+                                            <li class="review-item"><i class="flaticon-star"></i></li>
+                                        </ul>
+                                        <div class="product-price">
+                                            <span class="regular-price">$ 200</span>
+                                            <span class="price">$ 180</span>
+                                        </div>
+                                        <a href="javascript:void(0)" title="Add To Cart" class="add-cart addCart"
+                                            data-id="11">Add To Cart <i class="icon fas fa-plus-circle"></i></a>
                                     </div>
-                                    <a href="javascript:void(0)" title="Add To Cart" class="add-cart addCart"
-                                        data-id="11">Add To Cart <i class="icon fas fa-plus-circle"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <div class="single-grid-product">
-                                <div class="product-top">
-                                    <a href="product-details.html"><img class="product-thumbnal"
-                                            src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
-                                            alt="product" /></a>
-                                    <div class="product-flags">
-                                        <span class="product-flag sale">HOT</span>
-                                        <span class="product-flag discount">-10.00</span>
-                                    </div>
-                                    <ul class="prdouct-btn-wrapper">
-                                        <li class="single-product-btn">
-                                            <a class="product-btn CompareList" data-id="7"
-                                                title="Add to compare"><i class="icon flaticon-bar-chart"></i></a>
-                                        </li>
-                                        <li class="single-product-btn">
-                                            <a class="product-btn MyWishList" data-id="7"
-                                                title="Add to wishlist"><i class="icon flaticon-like"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="product-info text-center">
-                                    <h4 class="product-catagory">ELLA - HALOTHEMES</h4>
-                                    <input type="hidden" name="quantity" value="1" id="product_quantity">
-                                    <h3 class="product-name"><a class="product-link"
-                                            href="product-details.html">Tailored
-                                            Fit Mesh-Panel</a>
-                                    </h3>
-                                    <!-- This is server side code. User can not modify it. -->
-                                    <ul class="product-review">
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                    </ul>
-                                    <div class="product-price">
-                                        <span class="regular-price">$ 500</span>
-                                        <span class="price">$ 450</span>
-                                    </div>
-                                    <a href="javascript:void(0)" title="Add To Cart" class="add-cart addCart"
-                                        data-id="7">Add To Cart <i class="icon fas fa-plus-circle"></i></a>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <div class="single-grid-product">
-                                <div class="product-top">
-                                    <a href="/product/single/rosmo-namino-2"><img class="product-thumbnal"
-                                            src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
-                                            alt="product" /></a>
-                                    <div class="product-flags">
-                                        <span class="product-flag sale">HOT</span>
-                                        <span class="product-flag discount">-10.00</span>
-                                    </div>
-                                    <ul class="prdouct-btn-wrapper">
-                                        <li class="single-product-btn">
-                                            <a class="product-btn CompareList" data-id="8"
-                                                title="Add to compare"><i class="icon flaticon-bar-chart"></i></a>
-                                        </li>
-                                        <li class="single-product-btn">
-                                            <a class="product-btn MyWishList" data-id="8"
-                                                title="Add to wishlist"><i class="icon flaticon-like"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="product-info text-center">
-                                    <h4 class="product-catagory">ELLA - HALOTHEMES</h4>
-                                    <input type="hidden" name="quantity" value="1" id="product_quantity">
-                                    <h3 class="product-name"><a class="product-link"
-                                            href="/product/single/rosmo-namino-2">Rosmo Namino</a>
-                                    </h3>
-                                    <!-- This is server side code. User can not modify it. -->
-                                    <ul class="product-review">
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                    </ul>
-                                    <div class="product-price">
-                                        <span class="regular-price">$ 500</span>
-                                        <span class="price">$ 450</span>
-                                    </div>
-                                    <a href="javascript:void(0)" title="Add To Cart" class="add-cart addCart"
-                                        data-id="8">Add To Cart <i class="icon fas fa-plus-circle"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <div class="single-grid-product">
-                                <div class="product-top">
-                                    <a href="/product/single/Best-t-Shirt-for-male"><img class="product-thumbnal"
-                                            src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
-                                            alt="product" /></a>
-                                    <div class="product-flags">
-                                        <span class="product-flag sale">NEW</span>
-                                        <span class="product-flag discount">-10.00</span>
-                                    </div>
-                                    <ul class="prdouct-btn-wrapper">
-                                        <li class="single-product-btn">
-                                            <a class="product-btn CompareList" data-id="9"
-                                                title="Add to compare"><i class="icon flaticon-bar-chart"></i></a>
-                                        </li>
-                                        <li class="single-product-btn">
-                                            <a class="product-btn MyWishList" data-id="9"
-                                                title="Add to wishlist"><i class="icon flaticon-like"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="product-info text-center">
-                                    <h4 class="product-catagory">HOT - COLLECTION</h4>
-                                    <input type="hidden" name="quantity" value="1" id="product_quantity">
-                                    <h3 class="product-name"><a class="product-link"
-                                            href="/product/single/Best-t-Shirt-for-male">Best
-                                            T-Shirt for Male</a>
-                                    </h3>
-                                    <!-- This is server side code. User can not modify it. -->
-                                    <ul class="product-review">
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                        <li class="review-item"><i class="flaticon-star"></i></li>
-                                    </ul>
-                                    <div class="product-price">
-                                        <span class="regular-price">$ 500</span>
-                                        <span class="price">$ 450</span>
-                                    </div>
-                                    <a href="javascript:void(0)" title="Add To Cart" class="add-cart addCart"
-                                        data-id="9">Add To Cart <i class="icon fas fa-plus-circle"></i></a>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
