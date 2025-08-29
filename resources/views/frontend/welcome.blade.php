@@ -141,11 +141,11 @@
                 </div>
             </div>
             <div class="row">
-                @foreach ($products as $data)
+                @foreach ($products as $product)
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="single-grid-product">
                             <div class="product-top">
-                                <a href="{{ route('products.details', $data->slug) }}"><img class="product-thumbnal"
+                                <a href="{{ route('products.details', $product->slug) }}"><img class="product-thumbnal"
                                         src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
                                         alt="product" /></a>
                                 <div class="product-flags">
@@ -164,10 +164,10 @@
                                 </ul>
                             </div>
                             <div class="product-info text-center">
-                                <h4 class="product-catagory">{{ $data->category->en_category_name ?? '' }}</h4>
+                                <h4 class="product-catagory">{{ $product->category->en_category_name ?? '' }}</h4>
                                 <input type="hidden" name="quantity" value="1" id="product_quantity">
                                 <h3 class="product-name"><a class="product-link"
-                                        href="/product/single/fit-flare-dress-2">{{ $data->en_name }}</a>
+                                        href="/product/single/fit-flare-dress-2">{{ $product->en_name }}</a>
                                 </h3>
                                 <!-- This is server side code. User can not modify it. -->
                                 <ul class="product-review">
@@ -178,11 +178,11 @@
                                     <li class="review-item"><i class="flaticon-star"></i></li>
                                 </ul>
                                 <div class="product-price">
-                                    <span class="regular-price">$ 200</span>
-                                    <span class="price">$ 180</span>
+                                    <span class="regular-price">$ {{ $product->price }}</span>
+                                    <span class="price">$ {{ $product->discounted_price }}</span>
                                 </div>
                                 <a href="javascript:void(0)" title="Add To Cart" class="add-cart addCart"
-                                    data-id="11">Add
+                                    data-id="{{ $product->id }}">Add
                                     To Cart <i class="icon fas fa-plus-circle"></i></a>
                             </div>
                         </div>
@@ -329,11 +329,12 @@
                                             <li class="review-item"><i class="flaticon-star"></i></li>
                                         </ul>
                                         <div class="product-price">
-                                            <span class="regular-price">$ 200</span>
-                                            <span class="price">$ 180</span>
+                                            <span class="regular-price">$ {{ $product->price }}</span>
+                                            <span class="price">$ {{ $product->discounted_price }}</span>
                                         </div>
                                         <a href="javascript:void(0)" title="Add To Cart" class="add-cart addCart"
-                                            data-id="11">Add To Cart <i class="icon fas fa-plus-circle"></i></a>
+                                            data-id="{{ $product->id }}">Add
+                                            To Cart <i class="icon fas fa-plus-circle"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -379,11 +380,12 @@
                                             <li class="review-item"><i class="flaticon-star"></i></li>
                                         </ul>
                                         <div class="product-price">
-                                            <span class="regular-price">$ 200</span>
-                                            <span class="price">$ 180</span>
+                                            <span class="regular-price">$ {{ $product->price }}</span>
+                                            <span class="price">$ {{ $product->discounted_price }}</span>
                                         </div>
                                         <a href="javascript:void(0)" title="Add To Cart" class="add-cart addCart"
-                                            data-id="11">Add To Cart <i class="icon fas fa-plus-circle"></i></a>
+                                            data-id="{{ $product->id }}">Add
+                                            To Cart <i class="icon fas fa-plus-circle"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -429,11 +431,12 @@
                                             <li class="review-item"><i class="flaticon-star"></i></li>
                                         </ul>
                                         <div class="product-price">
-                                            <span class="regular-price">$ 200</span>
-                                            <span class="price">$ 180</span>
+                                            <span class="regular-price">$ {{ $product->price }}</span>
+                                            <span class="price">$ {{ $product->discounted_price }}</span>
                                         </div>
                                         <a href="javascript:void(0)" title="Add To Cart" class="add-cart addCart"
-                                            data-id="11">Add To Cart <i class="icon fas fa-plus-circle"></i></a>
+                                            data-id="{{ $product->id }}">Add
+                                            To Cart <i class="icon fas fa-plus-circle"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -479,11 +482,12 @@
                                             <li class="review-item"><i class="flaticon-star"></i></li>
                                         </ul>
                                         <div class="product-price">
-                                            <span class="regular-price">$ 200</span>
-                                            <span class="price">$ 180</span>
+                                            <span class="regular-price">$ {{ $product->price }}</span>
+                                            <span class="price">$ {{ $product->discounted_price }}</span>
                                         </div>
                                         <a href="javascript:void(0)" title="Add To Cart" class="add-cart addCart"
-                                            data-id="11">Add To Cart <i class="icon fas fa-plus-circle"></i></a>
+                                            data-id="{{ $product->id }}">Add
+                                            To Cart <i class="icon fas fa-plus-circle"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -496,12 +500,38 @@
     <!-- Trending Products area end here  -->
     <div>
     </div>
-    <!-- Image Gallery area end here  -->
-    <!-- Testimonial ara end here  -->
-    <div id="AddToCompareItemUrl" data-url="{{ route('compares.index') }}/add"></div>
-    <div id="AddToCartIntoSession" data-url="/cart/add"></div>
-    <div id="productWishlistUrl" data-url="{{ route('wishlists.index') }}/add"></div>
-    <div id="currency-price-url" data-url="/currency-price"></div>
-    <div id="currency-symbol-url" data-url="/currency-symbol"></div>
-    <div id="productImgAsset" data-url="/uploaded_files/product_image"></div>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <script>
+        $('.addCart').click(function(e) {
+            e.preventDefault();
+            var productId = $(this).data('id');
+
+            $.ajax({
+                url: "{{ route('cart.add') }}",
+                type: "POST",
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    id: productId
+                },
+                success: function(res) {
+                    if (res.status === 'success') {
+                        $('.totalCountItem').text(res.totalCount);
+                        $('.totalAmount').text('$ ' + res.totalAmount);
+                        toastr.options = {
+                            "timeOut": 2000,
+                            "progressBar": true,
+                            "positionClass": "toast-top-right"
+                        };
+                        toastr.success(res.message);
+                    } else {
+                        toastr.error(res.message);
+                    }
+                }
+            });
+        });
+    </script>
 @endsection

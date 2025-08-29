@@ -105,19 +105,19 @@
                                 <div class="product-bottom-button d-flex">
                                     <a href="javascript:void(0)" class="primary-btn buyNow" data-id="5">Buy Now</a>
                                     <a href="javascript:void(0)" title="Add To Cart" class="add-cart addCart"
-                                        data-id="5">Add To Cart
+                                        data-id="{{ $details->id }}">Add To Cart
                                         <i class="icon fas fa-plus-circle"></i></a>
                                 </div>
                             </div>
                             <div class="product-right-bottom">
                                 <ul class="features">
                                     <li class="single-feature"><img class="icon"
-                                            src="{{ asset('frontend') }}assets/images/delivery-van-icon.svg"
+                                            src="{{ asset('frontend') }}/assets/images/delivery-van-icon.svg"
                                             alt="icon" /><strong class="feature-title">Estimated
                                             Delivery:</strong><span class="feature-text">7
                                             days</span></li>
                                     <li class="single-feature"><img class="icon"
-                                            src="{{ asset('frontend') }}assets/images/shipping-return.svg"
+                                            src="{{ asset('frontend') }}/assets/images/shipping-return.svg"
                                             alt="icon" /><strong class="feature-title">Shipping Charge:</strong><span
                                             class="feature-text">
                                             $ 60
@@ -128,7 +128,7 @@
 
                                 <div class="guarantee-checkout-area">
                                     <h3 class="guarantee-title">Guarantee safe &amp; secure checkout</h3>
-                                    <img src="{{ asset('frontend') }}assets/images/we_accept.webp"
+                                    <img src="{{ asset('frontend') }}/assets/images/we_accept.webp"
                                         alt="payment-method-image" />
                                 </div>
 
@@ -245,11 +245,11 @@
                 </div>
             </div>
             <div class="row">
-                @foreach ($relatedproduct as $data)
+                @foreach ($relatedproduct as $product)
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="single-grid-product">
                             <div class="product-top">
-                                <a href="{{ route('products.details', $data->slug) }}"><img class="product-thumbnal"
+                                <a href="{{ route('products.details', $product->slug) }}"><img class="product-thumbnal"
                                         src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
                                         alt="product" /></a>
                                 <div class="product-flags">
@@ -258,7 +258,7 @@
                                 </div>
                                 <ul class="prdouct-btn-wrapper">
                                     <li class="single-product-btn">
-                                        <a class="product-btn CompareList" data-id="11" title="Add To Compare"><i
+                                        <a class="product-btn CompareList" product-id="11" title="Add To Compare"><i
                                                 class="icon flaticon-bar-chart"></i></a>
                                     </li>
                                     <li class="single-product-btn">
@@ -268,11 +268,11 @@
                                 </ul>
                             </div>
                             <div class="product-info text-center">
-                                <h4 class="product-catagory">{{ ucwords($data->brand->en_brand_name) ?? '' }}
+                                <h4 class="product-catagory">{{ ucwords($product->brand->en_brand_name) ?? '' }}
                                 </h4>
                                 <input type="hidden" name="quantity" value="1" id="product_quantity">
                                 <h3 class="product-name"><a class="product-link"
-                                        href="{{ route('products.details', $data->slug) }}">{{ $data->en_name }}</a>
+                                        href="{{ route('products.details', $product->slug) }}">{{ $product->en_name }}</a>
                                 </h3>
                                 <ul class="product-review">
                                     <li class="review-item"><i class="flaticon-star"></i></li>
@@ -282,11 +282,12 @@
                                     <li class="review-item"><i class="flaticon-star"></i></li>
                                 </ul>
                                 <div class="product-price">
-                                    <span class="regular-price">$ 200</span>
-                                    <span class="price">$ 180</span>
+                                    <span class="regular-price">$ {{ $product->price }}</span>
+                                    <span class="price">$ {{ $product->discounted_price }}</span>
                                 </div>
                                 <a href="javascript:void(0)" title="Add To Cart" class="add-cart addCart"
-                                    data-id="11">Add To Cart <i class="icon fas fa-plus-circle"></i></a>
+                                    data-id="{{ $product->id }}">Add
+                                    To Cart <i class="icon fas fa-plus-circle"></i></a>
                             </div>
                         </div>
                     </div>
@@ -294,4 +295,39 @@
             </div>
         </div>
     </div>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <script>
+        $('.addCart').click(function(e) {
+            e.preventDefault();
+            var productId = $(this).data('id');
+
+            $.ajax({
+                url: "{{ route('cart.add') }}",
+                type: "POST",
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    id: productId
+                },
+                success: function(res) {
+                    if (res.status === 'success') {
+                        $('.totalCountItem').text(res.totalCount);
+                        $('.totalAmount').text('$ ' + res.totalAmount);
+                        toastr.options = {
+                            "timeOut": 2000,
+                            "progressBar": true,
+                            "positionClass": "toast-top-right"
+                        };
+                        toastr.success(res.message);
+                    } else {
+                        toastr.error(res.message);
+                    }
+                }
+            });
+        });
+    </script>
 @endsection

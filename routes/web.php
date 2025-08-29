@@ -18,6 +18,11 @@ Route::get('checkout', [CheckoutController::class, 'index'])->name('checkout.ind
 
 //cart
 Route::get('cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('cart.add');
+Route::get('/cart-items', [CartController::class, 'cartItems'])->name('cart.items');
+Route::post('/cart-remove', [CartController::class, 'remove'])->name('cart.remove');
+Route::post('/cart-update', [CartController::class, 'update'])->name('cart.update');
+
 
 //products
 Route::get('products', [ProductController::class, 'index'])->name('products.index');

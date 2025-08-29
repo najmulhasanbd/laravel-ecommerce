@@ -33,16 +33,11 @@
                             <div class="single-widget">
                                 <h3 class="widget-title">Categories</h3>
                                 <ul class="widget-menu show">
-                                    <li class="menu-item"><a class="menu-link" href="#">Health
-                                            Category</a>
-                                    </li>
-                                    <li class="menu-item"><a class="menu-link" href="#">Women
-                                            Fashion</a>
-                                    </li>
-                                    <li class="menu-item"><a class="menu-link" href="#">Men Fashion</a>
-                                    </li>
-                                    <li class="menu-item"><a class="menu-link" href="#">Electronic</a>
-                                    </li>
+                                    @foreach (get_categories() as $category)
+                                        <li class="menu-item"><a class="menu-link"
+                                                href="">{{ ucwords($category->en_category_name) }}</a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -228,27 +223,6 @@
 <script src="{{ asset('frontend') }}/assets/js/front/sweat_aleart.js"></script>
 <script src="{{ asset('frontend') }}/assets/js/common.js"></script>
 
-<script src="{{ asset('admin') }}/admin/js/toastr.min.js"></script>
-
-<script>
-    toastr.options = {
-        "closeButton": false,
-        "debug": false,
-        "newestOnTop": false,
-        "progressBar": false,
-        "positionClass": "toast-bottom-right",
-        "preventDuplicates": false,
-        "onclick": null,
-        "showDuration": "300",
-        "hideDuration": "1000",
-        "timeOut": "5000",
-        "extendedTimeOut": "1000",
-        "showEasing": "swing",
-        "hideEasing": "linear",
-        "showMethod": "fadeIn",
-        "hideMethod": "fadeOut"
-    };
-</script>
 
 <script>
     (function(window, document) {

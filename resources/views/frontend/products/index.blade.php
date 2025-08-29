@@ -47,14 +47,15 @@
                         <div class="single-widget categories-widget">
                             <h3 class="widget-title">Categories</h3>
                             <div class="categories-list">
-                                @foreach ($categories as $data)
+                                @foreach ($categories as $product)
                                     <div class="single-categorie">
                                         <div class="categorie-left">
                                             <input class="form-check-input CheckCategory" type="checkbox"
                                                 value="Health Category">
-                                            <label class="form-check-label">{{ ucwords($data->en_category_name) }}</label>
+                                            <label
+                                                class="form-check-label">{{ ucwords($product->en_category_name) }}</label>
                                         </div>
-                                        <span class="categories-count">{{ $data->pcount }}</span>
+                                        <span class="categories-count">{{ $product->pcount }}</span>
                                     </div>
                                 @endforeach
                             </div>
@@ -202,7 +203,7 @@
                     <div id="filterProduct">
                         <div class="product-list">
                             <div class="row">
-                                @foreach ($products as $data)
+                                @foreach ($products as $product)
                                     <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6">
                                         <div class="single-grid-product">
                                             <div class="product-top">
@@ -228,12 +229,12 @@
                                             </div>
                                             <div class="product-info text-center">
                                                 <h4 class="product-catagory">
-                                                    {{ ucwords($data->brand->en_brand_name) ?? '' }}
+                                                    {{ ucwords($product->brand->en_brand_name) ?? '' }}
                                                 </h4>
                                                 <input type="hidden" name="quantity" value="1"
                                                     id="product_quantity">
                                                 <h3 class="product-name"><a class="product-link"
-                                                        href="{{ route('products.details', $data->slug) }}">{{ $data->en_name }}</a>
+                                                        href="{{ route('products.details', $product->slug) }}">{{ $product->en_name }}</a>
                                                 </h3>
                                                 <ul class="product-review">
                                                     <li class="review-item"><i class="flaticon-star"></i></li>
@@ -243,11 +244,12 @@
                                                     <li class="review-item"><i class="flaticon-star"></i></li>
                                                 </ul>
                                                 <div class="product-price">
-                                                    <span class="regular-price">$ 200</span>
-                                                    <span class="price">$ 180</span>
+                                                    <span class="regular-price">$ {{ $product->price }}</span>
+                                                    <span class="price">$ {{ $product->discounted_price }}</span>
                                                 </div>
                                                 <a href="javascript:void(0)" title="Add To Cart" class="add-cart addCart"
-                                                    data-id="11">Add To Cart <i class="icon fas fa-plus-circle"></i></a>
+                                                    data-id="{{ $product->id }}">Add
+                                                    To Cart <i class="icon fas fa-plus-circle"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -467,27 +469,37 @@
         </div>
     </div>
     <!-- For Mobile Filter Sidebar End -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-    <!-- Product Area End -->
-    <div id="shortingUrl" data-url="/product/shorting"></div>
-    <div id="checkCategoryFilter" data-url="/product/filter"></div>
+    <script>
+        $('.addCart').click(function(e) {
+            e.preventDefault();
+            var productId = $(this).data('id');
 
-    <div id="checkCategoryFilter" data-url="/product/filter"></div>
-    <div id="checkColorFilter" data-url="/product/filter"></div>
-    <div id="checkBrandFilter" data-url="/product/filter"></div>
-    <div id="checkSizeFilter" data-url="/product/filter"></div>
-    <div id="searchWidgetFilter" data-url="/product/filter"></div>
-    <div id="minMaxPriceFilter" data-url="/product/filter"></div>
-
-    <div id="AddToCompareItemUrl" data-url="{{ route('compares.index') }}/add"></div>
-    <div id="AddToCartIntoSession" data-url="/cart/add"></div>
-    <div id="productWishlistUrl" data-url="{{ route('wishlists.index') }}/add"></div>
-    <div id="productImgAsset" data-url="/uploaded_files/product_image"></div>
-
-    <div id="AddToCompareItemUrl" data-url="{{ route('compares.index') }}/add"></div>
-    <div id="AddToCartIntoSession" data-url="/cart/add"></div>
-    <div id="productWishlistUrl" data-url="{{ route('wishlists.index') }}/add"></div>
-    <div id="currency-price-url" data-url="/currency-price"></div>
-    <div id="currency-symbol-url" data-url="/currency-symbol"></div>
-    <div id="productImgAsset" data-url="/uploaded_files/product_image"></div>
+            $.ajax({
+                url: "{{ route('cart.add') }}",
+                type: "POST",
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    id: productId
+                },
+                success: function(res) {
+                    if (res.status === 'success') {
+                        $('.totalCountItem').text(res.totalCount);
+                        $('.totalAmount').text('$ ' + res.totalAmount);
+                        toastr.options = {
+                            "timeOut": 2000,
+                            "progressBar": true,
+                            "positionClass": "toast-top-right"
+                        };
+                        toastr.success(res.message);
+                    } else {
+                        toastr.error(res.message);
+                    }
+                }
+            });
+        });
+    </script>
 @endsection

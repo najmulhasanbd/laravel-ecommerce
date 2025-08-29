@@ -16,7 +16,7 @@ if (!function_exists('get_categories')) {
     function get_categories()
     {
         return Cache::remember('categories', 60 * 60, function () {
-            return DB::table('categories')->where('status', 1)->get();
+            return DB::table('categories')->where('status', 1)->limit(6)->get();
         });
     }
 }
