@@ -5,16 +5,19 @@ namespace App\Http\Controllers\Frontend;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class PagesController extends Controller
 {
     public function terms()
     {
-        return view('frontend.pages.terms_conditions');
+        $data=DB::table('pages')->where('slug','terms-and-conditions')->first();
+        return view('frontend.pages.terms_conditions',compact('data'));
     }
     public function about()
     {
-        return view('frontend.pages.about');
+        $data=DB::table('pages')->where('slug','about')->first();    
+        return view('frontend.pages.about',compact('data'));
     }
     public function contact()
     {
@@ -46,10 +49,12 @@ class PagesController extends Controller
     }
     public function faq()
     {
-        return view('frontend.pages.faq');
+        $data=DB::table('faq')->get();
+        return view('frontend.pages.faq',compact('data'));
     }
     public function privacy()
     {
-        return view('frontend.pages.privacy_policy');
+        $data=DB::table('pages')->where('slug','privacy-policy')->first();
+        return view('frontend.pages.privacy_policy',compact('data'));
     }
 }

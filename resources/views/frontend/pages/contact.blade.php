@@ -28,8 +28,7 @@
                                     src="{{ asset('frontend') }}/assets/images/contact-info-1.png" alt="contact-info" />
                                 <h3 class="contact-info-title">Email</h3>
                                 <p class="contact-info-content">
-                                    support@fashionwave.com
-
+                                    {{ get_settings()->email ?? '' }}
                                 </p>
                             </div>
                         </div>
@@ -40,9 +39,7 @@
                                     src="{{ asset('frontend') }}/assets/images/contact-info-2.png" alt="contact-info" />
                                 <h3 class="contact-info-title">Address</h3>
                                 <p class="contact-info-content">
-                                    House 24, Road 17 <br />
-                                    Banani-1213
-                                    Bangladesh
+                                    {{ get_settings()->address ?? '' }}
                                 </p>
                             </div>
                         </div>
@@ -53,7 +50,7 @@
                                     src="{{ asset('frontend') }}/assets/images/contact-info-3.png" alt="contact-info" />
                                 <h3 class="contact-info-title">Phone</h3>
                                 <p class="contact-info-content">
-                                    +123 2587 1456
+                                    {{ get_settings()->phone ?? '' }}
                                 </p>
                             </div>
                         </div>

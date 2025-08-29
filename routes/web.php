@@ -6,13 +6,11 @@ use App\Http\Controllers\Frontend\CompareController;
 use App\Http\Controllers\Frontend\PagesController;
 use App\Http\Controllers\Frontend\ProductController;
 use App\Http\Controllers\Frontend\SubscribeController;
+use App\Http\Controllers\Frontend\WelcomeController;
 use App\Http\Controllers\Frontend\WishlistController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('frontend.welcome');
-});
-
+Route::get('/',[WelcomeController::class,'index'])->name('welcome.index');
 
 //checkout
 Route::get('checkout', [CheckoutController::class, 'index'])->name('checkout.index');
