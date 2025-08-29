@@ -47,35 +47,16 @@
                         <div class="single-widget categories-widget">
                             <h3 class="widget-title">Categories</h3>
                             <div class="categories-list">
-                                <div class="single-categorie">
-                                    <div class="categorie-left">
-                                        <input class="form-check-input CheckCategory" type="checkbox"
-                                            value="Health Category">
-                                        <label class="form-check-label">Health Category</label>
+                                @foreach ($categories as $data)
+                                    <div class="single-categorie">
+                                        <div class="categorie-left">
+                                            <input class="form-check-input CheckCategory" type="checkbox"
+                                                value="Health Category">
+                                            <label class="form-check-label">{{ ucwords($data->en_category_name) }}</label>
+                                        </div>
+                                        <span class="categories-count">{{ $data->pcount }}</span>
                                     </div>
-                                    <span class="categories-count">3</span>
-                                </div>
-                                <div class="single-categorie">
-                                    <div class="categorie-left">
-                                        <input class="form-check-input CheckCategory" type="checkbox" value="Women Fashion">
-                                        <label class="form-check-label">Women Fashion</label>
-                                    </div>
-                                    <span class="categories-count">2</span>
-                                </div>
-                                <div class="single-categorie">
-                                    <div class="categorie-left">
-                                        <input class="form-check-input CheckCategory" type="checkbox" value="Men Fashion">
-                                        <label class="form-check-label">Men Fashion</label>
-                                    </div>
-                                    <span class="categories-count">6</span>
-                                </div>
-                                <div class="single-categorie">
-                                    <div class="categorie-left">
-                                        <input class="form-check-input CheckCategory" type="checkbox" value="Electronic">
-                                        <label class="form-check-label">Electronic</label>
-                                    </div>
-                                    <span class="categories-count">0</span>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
 
@@ -171,55 +152,16 @@
                         <div class="single-widget brand-widget">
                             <h3 class="widget-title">Brand</h3>
                             <div class="brand-list">
-                                <div class="single-brand">
-                                    <div class="brand-left">
-                                        <input class="form-check-input CheckBrand" type="checkbox" value="Circle">
-                                        <label class="form-check-label" for="Renuar">Circle</label>
+                                @foreach ($brands as $data)
+                                    <div class="single-brand">
+                                        <div class="brand-left">
+                                            <input class="form-check-input CheckBrand" type="checkbox" value="Circle">
+                                            <label class="form-check-label"
+                                                for="Renuar">{{ ucwords($data->en_brand_name) }}</label>
+                                        </div>
+                                        <span class="brand-count">{{ $data->bcount }}</span>
                                     </div>
-                                    <span class="brand-count">5</span>
-                                </div>
-                                <div class="single-brand">
-                                    <div class="brand-left">
-                                        <input class="form-check-input CheckBrand" type="checkbox" value="CodeLab">
-                                        <label class="form-check-label" for="Renuar">CodeLab</label>
-                                    </div>
-                                    <span class="brand-count">3</span>
-                                </div>
-                                <div class="single-brand">
-                                    <div class="brand-left">
-                                        <input class="form-check-input CheckBrand" type="checkbox" value="HEXLAB">
-                                        <label class="form-check-label" for="Renuar">HEXLAB</label>
-                                    </div>
-                                    <span class="brand-count">3</span>
-                                </div>
-                                <div class="single-brand">
-                                    <div class="brand-left">
-                                        <input class="form-check-input CheckBrand" type="checkbox" value="Kanba">
-                                        <label class="form-check-label" for="Renuar">Kanba</label>
-                                    </div>
-                                    <span class="brand-count">0</span>
-                                </div>
-                                <div class="single-brand">
-                                    <div class="brand-left">
-                                        <input class="form-check-input CheckBrand" type="checkbox" value="treva">
-                                        <label class="form-check-label" for="Renuar">treva</label>
-                                    </div>
-                                    <span class="brand-count">0</span>
-                                </div>
-                                <div class="single-brand">
-                                    <div class="brand-left">
-                                        <input class="form-check-input CheckBrand" type="checkbox" value="Zootv">
-                                        <label class="form-check-label" for="Renuar">Zootv</label>
-                                    </div>
-                                    <span class="brand-count">0</span>
-                                </div>
-                                <div class="single-brand">
-                                    <div class="brand-left">
-                                        <input class="form-check-input CheckBrand" type="checkbox" value="BanCi">
-                                        <label class="form-check-label" for="Renuar">BanCi</label>
-                                    </div>
-                                    <span class="brand-count">0</span>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
 
@@ -249,18 +191,10 @@
                                     <form>
                                         <select class="form-select sortingFilter">
                                             <option value="stop">Categories</option>
-                                            <option value="/product/category/1">
-                                                Health Category
-                                            </option>
-                                            <option value="/product/category/2">
-                                                Women Fashion
-                                            </option>
-                                            <option value="/product/category/3">
-                                                Men Fashion
-                                            </option>
-                                            <option value="/product/category/4">
-                                                Electronic
-                                            </option>
+                                            @foreach ($categories as $item)
+                                                <option value="{{ $item->id }}">{{ ucwords($item->en_category_name) }}
+                                                </option>
+                                            @endforeach
                                         </select>
                                     </form>
                                 </div>
@@ -270,374 +204,55 @@
                     <div id="filterProduct">
                         <div class="product-list">
                             <div class="row">
-                                <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6">
-                                    <div class="single-grid-product">
-                                        <div class="product-top">
-                                            <a href="product-details.html"><img class="product-thumbnal"
-                                                    src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
-                                                    alt="product" /></a>
-                                            <div class="product-flags">
-                                                <span class="product-flag sale">NEW</span>
-                                                <span class="product-flag discount">-10.00</span>
+                                @foreach ($products as $data)
+                                    <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6">
+                                        <div class="single-grid-product">
+                                            <div class="product-top">
+                                                <a href="/product/single/fit-flare-dress-2"><img class="product-thumbnal"
+                                                        src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
+                                                        alt="product" /></a>
+                                                <div class="product-flags">
+                                                    <span class="product-flag sale">NEW</span>
+                                                    <span class="product-flag discount">-10.00</span>
+                                                </div>
+                                                <ul class="prdouct-btn-wrapper">
+                                                    <li class="single-product-btn">
+                                                        <a class="product-btn CompareList" data-id="11"
+                                                            title="Add To Compare"><i
+                                                                class="icon flaticon-bar-chart"></i></a>
+                                                    </li>
+                                                    <li class="single-product-btn">
+                                                        <a class="product-btn MyWishList" data-id="11"
+                                                            title="Add To Wishlist"><i class="icon flaticon-like"></i></a>
+                                                    </li>
+                                                </ul>
                                             </div>
-                                            <ul class="prdouct-btn-wrapper">
-                                                <li class="single-product-btn">
-                                                    <a class="product-btn CompareList" data-id="1"
-                                                        title="Add To Compare"><i class="icon flaticon-bar-chart"></i></a>
-                                                </li>
-                                                <li class="single-product-btn">
-                                                    <a class="product-btn MyWishList" data-id="1"
-                                                        title="Add To Wishlist"><i class="icon flaticon-like"></i></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="product-info text-center">
-                                            <h4 class="product-catagory">ELLA - HALOTHEMES</h4>
-                                            <input type="hidden" name="quantity" value="1" id="product_quantity">
-                                            <h3 class="product-name"><a class="product-link"
-                                                    href="product-details.html">Plaid
-                                                    Cotton Shirt</a>
-                                            </h3>
-                                            <!-- This is server side code. User can not modify it. -->
-                                            <ul class="product-review">
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                            </ul>
-                                            <div class="product-price">
-                                                <span class="regular-price">$ 100</span>
-                                                <span class="price">$ 90</span>
+                                            <div class="product-info text-center">
+                                                <h4 class="product-catagory">{{ ucwords($data->brand->en_brand_name) }}
+                                                </h4>
+                                                <input type="hidden" name="quantity" value="1"
+                                                    id="product_quantity">
+                                                <h3 class="product-name"><a class="product-link"
+                                                        href="/product/single/fit-flare-dress-2">{{ $data->en_name }}</a>
+                                                </h3>
+                                                <!-- This is server side code. User can not modify it. -->
+                                                <ul class="product-review">
+                                                    <li class="review-item"><i class="flaticon-star"></i></li>
+                                                    <li class="review-item"><i class="flaticon-star"></i></li>
+                                                    <li class="review-item"><i class="flaticon-star"></i></li>
+                                                    <li class="review-item"><i class="flaticon-star"></i></li>
+                                                    <li class="review-item"><i class="flaticon-star"></i></li>
+                                                </ul>
+                                                <div class="product-price">
+                                                    <span class="regular-price">$ 200</span>
+                                                    <span class="price">$ 180</span>
+                                                </div>
+                                                <a href="javascript:void(0)" title="Add To Cart" class="add-cart addCart"
+                                                    data-id="11">Add To Cart <i class="icon fas fa-plus-circle"></i></a>
                                             </div>
-
-                                            <a href="javascript:void(0)" title="Add to cart" class="add-cart addCart"
-                                                data-id="1">Add To Cart <i class="icon fas fa-plus-circle"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6">
-                                    <div class="single-grid-product">
-                                        <div class="product-top">
-                                            <a href="product-details.html"><img class="product-thumbnal"
-                                                    src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
-                                                    alt="product" /></a>
-                                            <div class="product-flags">
-                                                <span class="product-flag sale">NEW</span>
-                                                <span class="product-flag discount">-10.00</span>
-                                            </div>
-                                            <ul class="prdouct-btn-wrapper">
-                                                <li class="single-product-btn">
-                                                    <a class="product-btn CompareList" data-id="1"
-                                                        title="Add To Compare"><i class="icon flaticon-bar-chart"></i></a>
-                                                </li>
-                                                <li class="single-product-btn">
-                                                    <a class="product-btn MyWishList" data-id="1"
-                                                        title="Add To Wishlist"><i class="icon flaticon-like"></i></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="product-info text-center">
-                                            <h4 class="product-catagory">ELLA - HALOTHEMES</h4>
-                                            <input type="hidden" name="quantity" value="1" id="product_quantity">
-                                            <h3 class="product-name"><a class="product-link"
-                                                    href="product-details.html">Plaid
-                                                    Cotton Shirt</a>
-                                            </h3>
-                                            <!-- This is server side code. User can not modify it. -->
-                                            <ul class="product-review">
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                            </ul>
-                                            <div class="product-price">
-                                                <span class="regular-price">$ 100</span>
-                                                <span class="price">$ 90</span>
-                                            </div>
-
-                                            <a href="javascript:void(0)" title="Add to cart" class="add-cart addCart"
-                                                data-id="1">Add To Cart <i class="icon fas fa-plus-circle"></i></a>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6">
-                                    <div class="single-grid-product">
-                                        <div class="product-top">
-                                            <a href="product-details.html"><img class="product-thumbnal"
-                                                    src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
-                                                    alt="product" /></a>
-                                            <div class="product-flags">
-                                                <span class="product-flag sale">NEW</span>
-                                                <span class="product-flag discount">-10.00</span>
-                                            </div>
-                                            <ul class="prdouct-btn-wrapper">
-                                                <li class="single-product-btn">
-                                                    <a class="product-btn CompareList" data-id="1"
-                                                        title="Add To Compare"><i class="icon flaticon-bar-chart"></i></a>
-                                                </li>
-                                                <li class="single-product-btn">
-                                                    <a class="product-btn MyWishList" data-id="1"
-                                                        title="Add To Wishlist"><i class="icon flaticon-like"></i></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="product-info text-center">
-                                            <h4 class="product-catagory">ELLA - HALOTHEMES</h4>
-                                            <input type="hidden" name="quantity" value="1" id="product_quantity">
-                                            <h3 class="product-name"><a class="product-link"
-                                                    href="product-details.html">Plaid
-                                                    Cotton Shirt</a>
-                                            </h3>
-                                            <!-- This is server side code. User can not modify it. -->
-                                            <ul class="product-review">
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                            </ul>
-                                            <div class="product-price">
-                                                <span class="regular-price">$ 100</span>
-                                                <span class="price">$ 90</span>
-                                            </div>
-
-                                            <a href="javascript:void(0)" title="Add to cart" class="add-cart addCart"
-                                                data-id="1">Add To Cart <i class="icon fas fa-plus-circle"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6">
-                                    <div class="single-grid-product">
-                                        <div class="product-top">
-                                            <a href="product-details.html"><img class="product-thumbnal"
-                                                    src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
-                                                    alt="product" /></a>
-                                            <div class="product-flags">
-                                                <span class="product-flag sale">NEW</span>
-                                                <span class="product-flag discount">-10.00</span>
-                                            </div>
-                                            <ul class="prdouct-btn-wrapper">
-                                                <li class="single-product-btn">
-                                                    <a class="product-btn CompareList" data-id="1"
-                                                        title="Add To Compare"><i class="icon flaticon-bar-chart"></i></a>
-                                                </li>
-                                                <li class="single-product-btn">
-                                                    <a class="product-btn MyWishList" data-id="1"
-                                                        title="Add To Wishlist"><i class="icon flaticon-like"></i></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="product-info text-center">
-                                            <h4 class="product-catagory">ELLA - HALOTHEMES</h4>
-                                            <input type="hidden" name="quantity" value="1" id="product_quantity">
-                                            <h3 class="product-name"><a class="product-link"
-                                                    href="product-details.html">Plaid
-                                                    Cotton Shirt</a>
-                                            </h3>
-                                            <!-- This is server side code. User can not modify it. -->
-                                            <ul class="product-review">
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                            </ul>
-                                            <div class="product-price">
-                                                <span class="regular-price">$ 100</span>
-                                                <span class="price">$ 90</span>
-                                            </div>
-
-                                            <a href="javascript:void(0)" title="Add to cart" class="add-cart addCart"
-                                                data-id="1">Add To Cart <i class="icon fas fa-plus-circle"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6">
-                                    <div class="single-grid-product">
-                                        <div class="product-top">
-                                            <a href="product-details.html"><img class="product-thumbnal"
-                                                    src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
-                                                    alt="product" /></a>
-                                            <div class="product-flags">
-                                                <span class="product-flag sale">NEW</span>
-                                                <span class="product-flag discount">-10.00</span>
-                                            </div>
-                                            <ul class="prdouct-btn-wrapper">
-                                                <li class="single-product-btn">
-                                                    <a class="product-btn CompareList" data-id="1"
-                                                        title="Add To Compare"><i class="icon flaticon-bar-chart"></i></a>
-                                                </li>
-                                                <li class="single-product-btn">
-                                                    <a class="product-btn MyWishList" data-id="1"
-                                                        title="Add To Wishlist"><i class="icon flaticon-like"></i></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="product-info text-center">
-                                            <h4 class="product-catagory">ELLA - HALOTHEMES</h4>
-                                            <input type="hidden" name="quantity" value="1" id="product_quantity">
-                                            <h3 class="product-name"><a class="product-link"
-                                                    href="product-details.html">Plaid
-                                                    Cotton Shirt</a>
-                                            </h3>
-                                            <!-- This is server side code. User can not modify it. -->
-                                            <ul class="product-review">
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                            </ul>
-                                            <div class="product-price">
-                                                <span class="regular-price">$ 100</span>
-                                                <span class="price">$ 90</span>
-                                            </div>
-
-                                            <a href="javascript:void(0)" title="Add to cart" class="add-cart addCart"
-                                                data-id="1">Add To Cart <i class="icon fas fa-plus-circle"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6">
-                                    <div class="single-grid-product">
-                                        <div class="product-top">
-                                            <a href="product-details.html"><img class="product-thumbnal"
-                                                    src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
-                                                    alt="product" /></a>
-                                            <div class="product-flags">
-                                                <span class="product-flag sale">NEW</span>
-                                                <span class="product-flag discount">-10.00</span>
-                                            </div>
-                                            <ul class="prdouct-btn-wrapper">
-                                                <li class="single-product-btn">
-                                                    <a class="product-btn CompareList" data-id="1"
-                                                        title="Add To Compare"><i class="icon flaticon-bar-chart"></i></a>
-                                                </li>
-                                                <li class="single-product-btn">
-                                                    <a class="product-btn MyWishList" data-id="1"
-                                                        title="Add To Wishlist"><i class="icon flaticon-like"></i></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="product-info text-center">
-                                            <h4 class="product-catagory">ELLA - HALOTHEMES</h4>
-                                            <input type="hidden" name="quantity" value="1" id="product_quantity">
-                                            <h3 class="product-name"><a class="product-link"
-                                                    href="product-details.html">Plaid
-                                                    Cotton Shirt</a>
-                                            </h3>
-                                            <!-- This is server side code. User can not modify it. -->
-                                            <ul class="product-review">
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                            </ul>
-                                            <div class="product-price">
-                                                <span class="regular-price">$ 100</span>
-                                                <span class="price">$ 90</span>
-                                            </div>
-
-                                            <a href="javascript:void(0)" title="Add to cart" class="add-cart addCart"
-                                                data-id="1">Add To Cart <i class="icon fas fa-plus-circle"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6">
-                                    <div class="single-grid-product">
-                                        <div class="product-top">
-                                            <a href="/product/single/rosmo-namino"><img class="product-thumbnal"
-                                                    src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
-                                                    alt="product" /></a>
-                                            <div class="product-flags">
-                                                <span class="product-flag sale">NEW</span>
-                                                <span class="product-flag discount">-10.00</span>
-                                            </div>
-                                            <ul class="prdouct-btn-wrapper">
-                                                <li class="single-product-btn">
-                                                    <a class="product-btn CompareList" data-id="5"
-                                                        title="Add To Compare"><i class="icon flaticon-bar-chart"></i></a>
-                                                </li>
-                                                <li class="single-product-btn">
-                                                    <a class="product-btn MyWishList" data-id="5"
-                                                        title="Add To Wishlist"><i class="icon flaticon-like"></i></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="product-info text-center">
-                                            <h4 class="product-catagory">HOT - COLLECTION</h4>
-                                            <input type="hidden" name="quantity" value="1" id="product_quantity">
-                                            <h3 class="product-name"><a class="product-link"
-                                                    href="/product/single/rosmo-namino">Rosmo
-                                                    Namino</a>
-                                            </h3>
-                                            <!-- This is server side code. User can not modify it. -->
-                                            <ul class="product-review">
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                            </ul>
-                                            <div class="product-price">
-                                                <span class="regular-price">$ 500</span>
-                                                <span class="price">$ 450</span>
-                                            </div>
-
-                                            <a href="javascript:void(0)" title="Add to cart" class="add-cart addCart"
-                                                data-id="5">Add To Cart <i class="icon fas fa-plus-circle"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6">
-                                    <div class="single-grid-product">
-                                        <div class="product-top">
-                                            <a href="product-details.html-2"><img class="product-thumbnal"
-                                                    src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
-                                                    alt="product" /></a>
-                                            <div class="product-flags">
-                                                <span class="product-flag sale">NEW</span>
-                                                <span class="product-flag discount">-10.00</span>
-                                            </div>
-                                            <ul class="prdouct-btn-wrapper">
-                                                <li class="single-product-btn">
-                                                    <a class="product-btn CompareList" data-id="6"
-                                                        title="Add To Compare"><i class="icon flaticon-bar-chart"></i></a>
-                                                </li>
-                                                <li class="single-product-btn">
-                                                    <a class="product-btn MyWishList" data-id="6"
-                                                        title="Add To Wishlist"><i class="icon flaticon-like"></i></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="product-info text-center">
-                                            <h4 class="product-catagory">HOT - COLLECTION</h4>
-                                            <input type="hidden" name="quantity" value="1" id="product_quantity">
-                                            <h3 class="product-name"><a class="product-link"
-                                                    href="product-details.html-2">Plaid
-                                                    Cotton Shirt</a>
-                                            </h3>
-                                            <!-- This is server side code. User can not modify it. -->
-                                            <ul class="product-review">
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                                <li class="review-item"><i class="flaticon-star"></i></li>
-                                            </ul>
-                                            <div class="product-price">
-                                                <span class="regular-price">$ 500</span>
-                                                <span class="price">$ 450</span>
-                                            </div>
-
-                                            <a href="javascript:void(0)" title="Add to cart" class="add-cart addCart"
-                                                data-id="6">Add To Cart <i class="icon fas fa-plus-circle"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                             <div class="pagination-area mt-30">
                                 <ul class="paginations text-center">
