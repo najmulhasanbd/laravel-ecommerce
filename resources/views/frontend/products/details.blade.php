@@ -28,54 +28,22 @@
                         <div class="product-single-left">
                             <div class="product-thumbnail-image">
                                 <ul class="product-thumb-silide slider slider-nav">
-
-                                    <li class="single-item"><img class="single-item-image"
-                                            src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
-                                            alt="product" /></li>
-                                    <li class="single-item"><img class="single-item-image"
-                                            src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
-                                            alt="product" />
-                                    </li>
-                                    <li class="single-item"><img class="single-item-image"
-                                            src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
-                                            alt="product" />
-                                    </li>
-                                    <li class="single-item"><img class="single-item-image"
-                                            src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
-                                            alt="product" /></li>
-                                    <li class="single-item"><img class="single-item-image"
-                                            src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
-                                            alt="product" /></li>
+                                    @foreach ($productImage as $data)
+                                        <li class="single-item"><img class="single-item-image"
+                                                src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
+                                                alt="product" /></li>
+                                    @endforeach
                                 </ul>
                             </div>
                             <div class="product-slier-big-image">
                                 <div class="product-priview-slide slider slider-for">
-                                    <div class="single-slide">
-                                        <img class="slide-image"
-                                            src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
-                                            alt="product" />
-                                    </div>
-                                    <div class="single-slide">
-                                        <img class="slide-image"
-                                            src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
-                                            alt="product" />
-                                    </div>
-                                    <div class="single-slide">
-                                        <img class="slide-image"
-                                            src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
-                                            alt="product" />
-                                    </div>
-                                    <div class="single-slide">
-                                        <img class="slide-image"
-                                            src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
-                                            alt="product" />
-                                    </div>
-                                    <div class="single-slide">
-                                        <img class="slide-image"
-                                            src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
-                                            alt="product" />
-                                    </div>
-
+                                    @foreach ($productImage as $data)
+                                        <div class="single-slide">
+                                            <img class="slide-image"
+                                                src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
+                                                alt="product" />
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>

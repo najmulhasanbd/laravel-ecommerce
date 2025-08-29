@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
 use App\Models\Brand;
-use App\Models\Category;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
@@ -21,6 +22,7 @@ class ProductController extends Controller
     {
         $details = Product::with('category')->where('slug', $slug)->first();
         $relatedproduct = Product::where('category_id', $details->category_id)->where('id', '!=', $details->id)->where('status', 1)->latest()->limit(4)->get();
-        return view('frontend.products.details', compact('details','relatedproduct'));
+        $productImage=DB::table('galleries')->where('product_id',$details->id)->get();
+        return view('frontend.products.details', compact('details','relatedproduct','productImage'));
     }
 }
