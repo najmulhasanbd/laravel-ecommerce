@@ -27,6 +27,7 @@ Route::post('/cart-update', [CartController::class, 'update'])->name('cart.updat
 //products
 Route::get('products', [ProductController::class, 'index'])->name('products.index');
 Route::get('product/{slug}', [ProductController::class, 'productdetails'])->name('products.details');
+Route::get('category/{slug}', [ProductController::class, 'productcategory'])->name('products.category');
 
 //wishlist
 Route::get('wishlists', [WishlistController::class, 'index'])->name('wishlists.index');

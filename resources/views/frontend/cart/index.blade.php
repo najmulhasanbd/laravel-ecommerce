@@ -71,21 +71,17 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <div class="cart-quantity input-group">
-                                                    <div class="increase-btn dec qtybutton btn qty_decrease"
-                                                        data-id="{{ $item['id'] }}">-</div>
-                                                    <input class="qty-input cart-plus-minus-box qty_value" type="text"
-                                                        value="{{ $item['quantity'] }}" readonly />
-                                                    <div class="increase-btn inc qtybutton btn qty_increase"
-                                                        data-id="{{ $item['id'] }}">+</div>
+                                                <div class="input-group" style="width:120px;">
+                                                    <button type="button" class="btn btn-outline-secondary qty_decrease"
+                                                        data-id="{{ $item['id'] }}">-</button>
+                                                    <input type="text" class="form-control text-center qty_value"
+                                                        value="{{ $item['quantity'] }}" readonly>
+                                                    <button type="button" class="btn btn-outline-secondary qty_increase"
+                                                        data-id="{{ $item['id'] }}">+</button>
                                                 </div>
                                             </td>
-                                            <td>
-                                                <h1 class="cart-table-item-total SubTotalAmount">
-                                                    $
-                                                    {{ ($item['discounted_price'] ?? $item['price']) * $item['quantity'] }}
-                                                </h1>
-                                            </td>
+                                            <td class="SubTotalAmount">$
+                                                {{ ($item['discounted_price'] ?? $item['price']) * $item['quantity'] }}</td>
                                             <td>
                                                 <button class="delet-btn deleteItemCart" title="Delete Item"
                                                     data-id="{{ $item['id'] }}">
@@ -193,48 +189,41 @@
             });
         });
     </script>
+
+
     <script>
-        $(document).on('click', '.qty_increase, .qty_decrease', function(e) {
-            e.preventDefault();
+        $(document).ready(function() {
+            // প্রথমে সব previous click handlers remove করে দাও
+            $(document).off('click', '.qty_increase, .qty_decrease');
 
-            var id = $(this).data('id');
-            var $row = $(this).closest('tr');
-            var $input = $row.find(".qty_value");
-            var qty = parseInt($input.val());
+            // এখন নতুন click handler bind করো
+            $(document).on('click', '.qty_increase, .qty_decrease', function() {
+                var $btn = $(this);
+                var $row = $btn.closest('tr');
+                var $input = $row.find('.qty_value');
+                var qty = parseInt($input.val()) || 1;
 
-            if ($(this).hasClass('qty_increase')) {
-                qty++;
-            } else {
-                qty = qty > 1 ? qty - 1 : 1; // 1 এর নিচে নামতে দিবে না
-            }
-
-            $.ajax({
-                url: "{{ route('cart.update') }}",
-                type: "POST",
-                dataType: "json",
-                data: {
-                    _token: "{{ csrf_token() }}",
-                    id: id,
-                    quantity: qty
-                },
-                success: function(response) {
-                    if (response.status) {
-                        // Update quantity box
-                        $input.val(response.quantity);
-
-                        // Update row subtotal
-                        $row.find(".SubTotalAmount").text("$ " + response.row_total.toFixed(2));
-
-                        // Update total count & total amount
-                        $(".totalCountItem, #cart-count").text(response.cart_count);
-                        $(".totalAmount, .cart-page-final-total").text("$ " + response.cart_total
-                            .toFixed(2));
-                        $(".totalItemsCount").text(response.cart_count);
-                    }
-                },
-                error: function(xhr) {
-                    console.error(xhr.responseText);
+                // 1 করে increment / decrement
+                if ($btn.hasClass('qty_increase')) {
+                    qty++;
+                } else {
+                    qty = Math.max(1, qty - 1);
                 }
+
+                // Ajax call
+                $.post("{{ route('cart.update') }}", {
+                    _token: "{{ csrf_token() }}",
+                    id: $btn.data('id'),
+                    quantity: qty
+                }, function(res) {
+                    if (res.status) {
+                        $input.val(res.quantity);
+                        $row.find('.SubTotalAmount').text("$ " + res.row_total.toFixed(2));
+                        $(".totalAmount, .cart-page-final-total").text("$ " + res.cart_total
+                            .toFixed(2));
+                        $(".totalCountItem, #cart-count, .totalItemsCount").text(res.cart_count);
+                    }
+                }, 'json');
             });
         });
     </script>

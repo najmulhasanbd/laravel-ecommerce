@@ -35,7 +35,7 @@
                                 <ul class="widget-menu show">
                                     @foreach (get_categories() as $category)
                                         <li class="menu-item"><a class="menu-link"
-                                                href="">{{ ucwords($category->en_category_name) }}</a>
+                                                href="{{ route('products.category', $category->slug) }}">{{ ucwords($category->en_category_name) }}</a>
                                         </li>
                                     @endforeach
                                 </ul>

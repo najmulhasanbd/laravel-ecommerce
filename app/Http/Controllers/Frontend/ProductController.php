@@ -25,4 +25,7 @@ class ProductController extends Controller
         $productImage=DB::table('galleries')->where('product_id',$details->id)->get();
         return view('frontend.products.details', compact('details','relatedproduct','productImage'));
     }
+    public function productcategory($slug){
+        return $slug;
+    }
 }
