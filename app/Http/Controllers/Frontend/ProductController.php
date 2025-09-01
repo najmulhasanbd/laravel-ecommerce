@@ -22,10 +22,15 @@ class ProductController extends Controller
     {
         $details = Product::with('category')->where('slug', $slug)->first();
         $relatedproduct = Product::where('category_id', $details->category_id)->where('id', '!=', $details->id)->where('status', 1)->latest()->limit(4)->get();
-        $productImage=DB::table('galleries')->where('product_id',$details->id)->get();
-        return view('frontend.products.details', compact('details','relatedproduct','productImage'));
+        $productImage = DB::table('galleries')->where('product_id', $details->id)->get();
+        return view('frontend.products.details', compact('details', 'relatedproduct', 'productImage'));
     }
-    public function productcategory($slug){
-        return $slug;
+    public function productcategory($slug)
+    {
+        $categories = Category::where('status', 1)->get();
+        $brands = Brand::where('status', 1)->get();
+        $selectedCategory = Category::where('status', 1)->where('slug', $slug)->first();
+        $products = Product::where('status', 1)->where('category_id', $selectedCategory->id)->get();
+        return view('frontend.products.byCategory', compact('categories', 'brands', 'products','selectedCategory'));
     }
 }

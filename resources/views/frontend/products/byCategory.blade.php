@@ -6,8 +6,9 @@
         <div class="container">
             <div class="breadcrumb-wrap text-center">
                 <h2 class="page-title">
-                    Shop
+                    {{ $selectedCategory->en_category_name ?? 'Shop' }}
                 </h2>
+
                 <ul class="breadcrumb-pages">
                     <li class="page-item"><a class="page-item-link" href="http://127.0.0.1:8000">Home</a>
                     </li>
@@ -43,6 +44,7 @@
                                 </div>
                             </form>
                         </div>
+
                         <div class="single-widget price-widget">
                             <h3 class="widget-title">Price</h3>
                             <form>
@@ -182,7 +184,7 @@
                     </div>
                     <div id="filterProduct">
                         <div class="product-list">
-                            < class="row">
+                            <div class="row">
                                 @foreach ($products as $product)
                                     <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6">
                                         <div class="single-grid-product">
@@ -209,7 +211,7 @@
                                             </div>
                                             <div class="product-info text-center">
                                                 <h4 class="product-catagory">
-                                                    {{ ucwords($product->brand->en_brand_name) ?? '' }}
+                                                    {{ ucwords($product->category->en_category_name) ?? '' }}
                                                 </h4>
                                                 <input type="hidden" name="quantity" value="1"
                                                     id="product_quantity">
@@ -234,13 +236,12 @@
                                         </div>
                                     </div>
                                 @endforeach
-
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 
     <!-- For Mobile Filter Sidebar Start -->
@@ -476,6 +477,7 @@
             });
         });
     </script>
+
     <script>
         $(document).ready(function() {
             $('.productByCategory').change(function() {

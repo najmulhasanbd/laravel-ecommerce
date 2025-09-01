@@ -23,7 +23,7 @@
             <div class="row">
                 @foreach ($categories as $data)
                     <div class="col-lg-4 col-md-6">
-                        <a class="single-categorie" href="/product/category/5">
+                        <a class="single-categorie" href="{{ route('products.category', $data->slug) }}">
                             <div class="categorie-wrap">
                                 <div class="categorie-icon">
                                     <img src="{{ asset('frontend/assets/images/products/tshirt.png') }}" alt="">
