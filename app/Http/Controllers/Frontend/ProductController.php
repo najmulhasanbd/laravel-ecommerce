@@ -8,6 +8,8 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Color;
+use App\Models\Size;
 
 class ProductController extends Controller
 {
@@ -32,8 +34,10 @@ class ProductController extends Controller
         }
 
         $products = $query->get();
+        $colors=Color::all();
+        $sizes=Size::all();
 
-        return view('frontend.products.index', compact('categories', 'brands', 'products'));
+        return view('frontend.products.index', compact('categories', 'brands', 'products','colors','sizes'));
     }
     public function productdetails($slug)
     {
