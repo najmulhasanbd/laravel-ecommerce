@@ -11,11 +11,28 @@ use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $categories = Category::where('status', 1)->get();
         $brands = Brand::where('status', 1)->get();
-        $products = Product::with('category', 'brand')->where('status', 1)->get();
+
+        $query = Product::with('category', 'brand')->where('status', 1);
+
+        if ($request->filled('keywords')) {
+            $query->where('en_name', 'like', '%' . $request->keywords . '%');
+        }
+
+        // Price Filter
+        if ($request->filled('min_price')) {
+            $query->where('price', '>=', $request->min_price);
+        }
+
+        if ($request->filled('max_price')) {
+            $query->where('price', '<=', $request->max_price);
+        }
+
+        $products = $query->get();
+
         return view('frontend.products.index', compact('categories', 'brands', 'products'));
     }
     public function productdetails($slug)
@@ -31,6 +48,6 @@ class ProductController extends Controller
         $brands = Brand::where('status', 1)->get();
         $selectedCategory = Category::where('status', 1)->where('slug', $slug)->first();
         $products = Product::where('status', 1)->where('category_id', $selectedCategory->id)->get();
-        return view('frontend.products.byCategory', compact('categories', 'brands', 'products','selectedCategory'));
+        return view('frontend.products.byCategory', compact('categories', 'brands', 'products', 'selectedCategory'));
     }
 }

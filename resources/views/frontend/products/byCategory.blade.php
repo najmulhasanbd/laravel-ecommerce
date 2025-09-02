@@ -35,32 +35,34 @@
 
                         <div class="single-widget search-widget">
                             <h3 class="widget-title">Search Here</h3>
-                            <form>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="searchwidget" name="searchwidget"
-                                        placeholder="Product Store" />
-                                    <button type="button" class="search-btn"><i
-                                            class="flaticon-search searchWidget"></i></button>
+                            <form action="{{ route('products.index') }}" method="GET">
+                                <div class="form-group d-flex">
+                                    <input type="text" class="form-control" id="keywords" name="keywords"
+                                        placeholder="Product Store" value="{{ request('keywords') }}" />
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="flaticon-search searchWidget"></i>
+                                    </button>
                                 </div>
                             </form>
                         </div>
 
                         <div class="single-widget price-widget">
                             <h3 class="widget-title">Price</h3>
-                            <form>
+                            <form action="{{ route('products.index') }}" method="GET">
                                 <div class="price-wrap">
                                     <div class="price-wrap-left">
                                         <div class="single-price">
                                             <input type="number" class="form-control" id="minPrice" name="min_price"
-                                                placeholder="$ Min" min="1" />
+                                                placeholder="$ Min" min="1" value="{{ request('min_price') }}" />
                                         </div>
                                         <div class="single-price">
                                             <input type="number" class="form-control" id="maxPrice" name="max_price"
-                                                placeholder="$ Max" />
+                                                placeholder="$ Max" value="{{ request('max_price') }}" />
                                         </div>
                                     </div>
-                                    <button type="button" class="price-submit PriceSubmit"><i
-                                            class="fas fa-play"></i></button>
+                                    <button type="submit" class="price-submit PriceSubmit">
+                                        <i class="fas fa-play"></i>
+                                    </button>
                                 </div>
                             </form>
                         </div>
