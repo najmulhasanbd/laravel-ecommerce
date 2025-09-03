@@ -23,7 +23,10 @@ class ProductController extends Controller
         if ($request->filled('keywords')) {
             $query->where('en_name', 'like', '%' . $request->keywords . '%');
         }
-
+         // 🔹 Category filter
+    if ($request->filled('category')) {
+        $query->where('category_id', $request->category);
+    }
         // Price Filter
         if ($request->filled('min_price')) {
             $query->where('price', '>=', $request->min_price);

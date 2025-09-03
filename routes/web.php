@@ -52,3 +52,7 @@ Route::controller(PagesController::class)->group(function () {
     Route::get('faq', 'faq')->name('faq');
     Route::get('privacy-policy', 'privacy')->name('privacy');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

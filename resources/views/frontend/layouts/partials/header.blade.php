@@ -64,23 +64,28 @@
             <div class="container">
                 <div class="header-middle-wrap">
                     <div class="brand-area">
-                        <a class="brand-logo" href="index.html"><img class="brand-image"
+                        <a class="brand-logo" href="{{ url('/') }}"><img class="brand-image"
                                 src="{{ asset('frontend') }}/assets/images/logo.png" alt="Fashionwave" /></a>
                     </div>
                     <div class="search-area">
-                        <form action="#" method="get">
+                        <form action="{{ route('products.index') }}" method="get">
                             <div class="search-wrap">
                                 <select class="form-select" name="category">
-                                    <option value="" selected>Categories</option>
-                                    @foreach (get_categories() as $item)
-                                        <option value="{{ $item->id }}">{{ ucwords($item->en_category_name) }}
+                                    <option value="">Categories</option>
+                                    @foreach (get_categories() as $category)
+                                        <option value="{{ $category->id }}"
+                                            {{ request('category') == $category->id ? 'selected' : '' }}>
+                                            {{ ucwords($category->en_category_name) }}
                                         </option>
                                     @endforeach
                                 </select>
+
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="search" name="search"
-                                        placeholder="Search Here" />
-                                    <button type="submit" class="search-btn"><i class="flaticon-search"></i></button>
+                                    <input type="text" class="form-control" id="search" name="keywords"
+                                        value="{{ request('keywords') }}" placeholder="Search Here" />
+                                    <button type="submit" class="search-btn">
+                                        <i class="flaticon-search"></i>
+                                    </button>
                                 </div>
                             </div>
                         </form>
@@ -203,7 +208,7 @@
 <div class="offcanvas offcanvas-start menu-offcanvas" tabindex="-1" id="offcanvasMobileMenu">
     <div class="mobile-menu-area">
         <div class="offcanvas-header">
-            <a class="brand-logo" href="http://127.0.0.1:8000"><img class="brand-image"
+            <a class="brand-logo" href="{{ url('/') }}"><img class="brand-image"
                     src="{{ asset('frontend') }}/assets/images/logo.png" alt="Fashionwave" /></a>
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
                 aria-label="Close"></button>
