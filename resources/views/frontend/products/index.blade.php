@@ -42,12 +42,15 @@
                                         <i class="flaticon-search searchWidget"></i>
                                     </button>
                                 </div>
+                                <input type="hidden" name="min_price" value="{{ request('min_price') }}" />
+                                <input type="hidden" name="max_price" value="{{ request('max_price') }}" />
                             </form>
                         </div>
                         <div class="single-widget price-widget">
                             <h3 class="widget-title">Price</h3>
                             <form action="{{ route('products.index') }}" method="GET">
                                 <div class="price-wrap">
+                                    <input type="hidden" name="keywords" value="{{ request('keywords') }}" />
                                     <div class="price-wrap-left">
                                         <div class="single-price">
                                             <input type="number" class="form-control" id="minPrice" name="min_price"
@@ -98,14 +101,15 @@
                         <div class="single-widget brand-widget">
                             <h3 class="widget-title">Brand</h3>
                             <div class="brand-list">
-                                @foreach ($brands as $data)
+                                @foreach ($brands as $brand)
                                     <div class="single-brand">
                                         <div class="brand-left">
-                                            <input class="form-check-input CheckBrand" type="checkbox" value="Circle">
-                                            <label class="form-check-label"
-                                                for="Renuar">{{ ucwords($data->en_brand_name) }}</label>
+                                            <input class="form-check-input checkBrand" type="checkbox"
+                                                value="{{ $brand->id }}"
+                                                @if (request()->has('brands') && in_array($brand->id, explode(',', request('brands')))) checked @endif>
+                                            <label class="form-check-label">{{ ucwords($brand->en_brand_name) }}</label>
                                         </div>
-                                        <span class="brand-count">{{ $data->bcount }}</span>
+                                        <span class="brand-count">{{ $brand->bcount }}</span>
                                     </div>
                                 @endforeach
                             </div>
@@ -151,7 +155,7 @@
                                     <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6">
                                         <div class="single-grid-product">
                                             <div class="product-top">
-                                                <a href="{{ route('products.details', $data->slug) }}"><img
+                                                <a href="{{ route('products.details', $product->slug) }}"><img
                                                         class="product-thumbnal"
                                                         src="{{ asset('frontend') }}/assets/images/products/tshirt.png"
                                                         alt="product" /></a>
@@ -450,5 +454,35 @@
                 }
             })
         })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('.checkBrand').on('change', function() {
+                let selectedBrands = [];
+
+                $('.checkBrand:checked').each(function() {
+                    selectedBrands.push($(this).val());
+                });
+
+                let url = new URL(window.location.href);
+                let params = new URLSearchParams(url.search);
+
+                if (!params.has('keywords')) params.set('keywords', '');
+                if (!params.has('min_price')) params.set('min_price', '');
+                if (!params.has('max_price')) params.set('max_price', '');
+
+                params.delete('brands');
+
+                if (selectedBrands.length > 0) {
+                    let newParams = params.toString();
+                    let newUrl = url.origin + url.pathname + '?' + newParams + '&brands=' + selectedBrands
+                        .join(',');
+                    newUrl = newUrl.replace(/[?&]$/, '');
+                    window.location.href = newUrl;
+                } else {
+                    window.location.href = url.origin + url.pathname + '?' + params.toString();
+                }
+            });
+        });
     </script>
 @endsection

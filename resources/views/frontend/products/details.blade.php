@@ -68,25 +68,27 @@
                                     <span class="regular-price">$ {{ $details->price }}</span>
                                 </div>
                                 <div class="product-color-area">
-                                    <div class="variable-single-item color-switch">
-                                        <div class="product-variable-color">
-                                            <label>
-                                                <input type="hidden" name="colorId" value="1">
-                                                <input name="productColor" class="color-select" type="radio"
-                                                    value="1">
-                                                <span style="background:#FF0000;"></span>
-                                            </label>
+                                    @foreach ($details->colors as $item)
+                                        <div class="variable-single-item color-switch">
+                                            <div class="product-variable-color">
+                                                <label>
+                                                    <input name="productColor" class="color-select" type="radio"
+                                                        value="{{ $item->color }}">
+                                                    <span style="background:#{{ $item->code }};"></span>
+                                                </label>
+                                            </div>
                                         </div>
-                                    </div>
+                                    @endforeach
                                 </div>
 
                                 <div class="product-size-area">
                                     <h4 class="size-title">Type: Physical
                                     </h4>
                                     <ul class="size-switch">
-                                        <input type="hidden" class="sizeValue" name="productSize" value="1">
-                                        <li class="single-size activeSize" data-size="1">
-                                            S</li>
+                                        @foreach ($details->sizes as $item)
+                                            <li class="single-size activeSize" data-size="{{ $item->size }}">
+                                                {{ $item->size }}</li>
+                                        @endforeach
                                     </ul>
                                 </div>
 
@@ -306,12 +308,17 @@
             e.preventDefault();
             var productId = $(this).data('id');
 
+            let selectedColor = $('input[name="productColor"]:checked').val();
+            let selectedSize = $('.size-switch li.active').data('size');
+            alert(selectedSize);
             $.ajax({
                 url: "{{ route('cart.add') }}",
                 type: "POST",
                 data: {
                     _token: "{{ csrf_token() }}",
-                    id: productId
+                    id: productId,
+                    color: $color ?? '',
+                    size: $size ?? '',
                 },
                 success: function(res) {
                     if (res.status === 'success') {

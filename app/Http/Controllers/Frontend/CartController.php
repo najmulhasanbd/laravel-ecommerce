@@ -30,13 +30,14 @@ class CartController extends Controller
                 'name' => $product->en_name,
                 'price' => $product->price,
                 'discounted_price' => $product->discounted_price,
-                'quantity' => 1, // Add quantity here
+                'quantity' => 1,
+                'color' => $request->color,
+                'size'  => $request->size,
             ];
         }
 
         Session::put('cart', $cart);
 
-        // Calculate totals using discounted_price if available
         $totalCount = array_sum(array_column($cart, 'quantity'));
         $totalAmount = array_sum(
             array_map(function ($item) {
@@ -89,34 +90,33 @@ class CartController extends Controller
         ]);
     }
     public function update(Request $request)
-{
-    $id       = $request->id;
-    $quantity = (int) $request->quantity;
+    {
+        $id       = $request->id;
+        $quantity = (int) $request->quantity;
 
-    $cart = session()->get('cart', []);
+        $cart = session()->get('cart', []);
 
-    if (isset($cart[$id])) {
-        if ($quantity > 0) {
-            $cart[$id]['quantity'] = $quantity;
-        } else {
-            unset($cart[$id]); // যদি 0 হয় তাহলে রিমুভ করে দেবে
+        if (isset($cart[$id])) {
+            if ($quantity > 0) {
+                $cart[$id]['quantity'] = $quantity;
+            } else {
+                unset($cart[$id]); // যদি 0 হয় তাহলে রিমুভ করে দেবে
+            }
+
+            session()->put('cart', $cart);
         }
 
-        session()->put('cart', $cart);
+        $cart_count = array_sum(array_column($cart, 'quantity'));
+        $cart_total = array_sum(array_map(fn($i) => ($i['discounted_price'] ?? $i['price']) * $i['quantity'], $cart));
+        $row_total  = isset($cart[$id]) ? ($cart[$id]['discounted_price'] ?? $cart[$id]['price']) * $cart[$id]['quantity'] : 0;
+
+        return response()->json([
+            'status'     => true,
+            'message'    => 'Cart updated',
+            'cart_count' => $cart_count,
+            'cart_total' => $cart_total,
+            'row_total'  => $row_total,
+            'quantity'   => $cart[$id]['quantity'] ?? 0,
+        ]);
     }
-
-    $cart_count = array_sum(array_column($cart, 'quantity'));
-    $cart_total = array_sum(array_map(fn($i) => ($i['discounted_price'] ?? $i['price']) * $i['quantity'], $cart));
-    $row_total  = isset($cart[$id]) ? ($cart[$id]['discounted_price'] ?? $cart[$id]['price']) * $cart[$id]['quantity'] : 0;
-
-    return response()->json([
-        'status'     => true,
-        'message'    => 'Cart updated',
-        'cart_count' => $cart_count,
-        'cart_total' => $cart_total,
-        'row_total'  => $row_total,
-        'quantity'   => $cart[$id]['quantity'] ?? 0,
-    ]);
-}
-
 }
