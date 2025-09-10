@@ -154,8 +154,8 @@
                                 </div>
                                 <ul class="prdouct-btn-wrapper">
                                     <li class="single-product-btn">
-                                        <a class="product-btn CompareList" data-id="11" title="Add To Compare"><i
-                                                class="icon flaticon-bar-chart"></i></a>
+                                        <a class="product-btn CompareList" href="{{ route('compares.add', $product->id) }}"
+                                            title="Add To Compare"><i class="icon flaticon-bar-chart"></i></a>
                                     </li>
                                     <li class="single-product-btn">
                                         <a class="product-btn MyWishList" data-id="11" title="Add To Wishlist"><i
@@ -305,7 +305,8 @@
                                         </div>
                                         <ul class="prdouct-btn-wrapper">
                                             <li class="single-product-btn">
-                                                <a class="product-btn CompareList" data-id="11"
+                                                <a class="product-btn CompareList"
+                                                    href="{{ route('compares.add', $product->id) }}"
                                                     title="Add To Compare"><i class="icon flaticon-bar-chart"></i></a>
                                             </li>
                                             <li class="single-product-btn">
@@ -356,7 +357,8 @@
                                         </div>
                                         <ul class="prdouct-btn-wrapper">
                                             <li class="single-product-btn">
-                                                <a class="product-btn CompareList" data-id="11"
+                                                <a class="product-btn CompareList"
+                                                    href="{{ route('compares.add', $product->id) }}"
                                                     title="Add To Compare"><i class="icon flaticon-bar-chart"></i></a>
                                             </li>
                                             <li class="single-product-btn">
@@ -407,7 +409,8 @@
                                         </div>
                                         <ul class="prdouct-btn-wrapper">
                                             <li class="single-product-btn">
-                                                <a class="product-btn CompareList" data-id="11"
+                                                <a class="product-btn CompareList"
+                                                    href="{{ route('compares.add', $product->id) }}"
                                                     title="Add To Compare"><i class="icon flaticon-bar-chart"></i></a>
                                             </li>
                                             <li class="single-product-btn">
@@ -458,7 +461,8 @@
                                         </div>
                                         <ul class="prdouct-btn-wrapper">
                                             <li class="single-product-btn">
-                                                <a class="product-btn CompareList" data-id="11"
+                                                <a class="product-btn CompareList"
+                                                    href="{{ route('compares.add', $product->id) }}"
                                                     title="Add To Compare"><i class="icon flaticon-bar-chart"></i></a>
                                             </li>
                                             <li class="single-product-btn">

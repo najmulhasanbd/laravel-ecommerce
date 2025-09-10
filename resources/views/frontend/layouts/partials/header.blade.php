@@ -53,7 +53,7 @@
                             <div class="account-switcher">
                                 <span class="flag"><img src="{{ asset('frontend') }}/assets/images/user-avatar11.png"
                                         alt="fashionwave"></span>
-                                <a href="signin.html" class="lang">My Account</a>
+                                <a href="{{ route('login') }}" class="lang">My Account</a>
                             </div>
                         </div>
                     </div>
@@ -112,11 +112,23 @@
                                     <i class="btn-icon flaticon-bar-chart"></i>
                                     <span class="count CompareCuntFromController">0</span>
                                 </div>
+                                @php
+                                    use Illuminate\Support\Facades\Auth;
+                                    use App\Models\Compare;
+
+                                    $compareCount = 0;
+                                    if (Auth::check()) {
+                                        $compareCount = Compare::where('user_id', Auth::id())->count();
+                                    }
+                                @endphp
+
                                 <div class="btn-right">
                                     <span class="btn-text">Compare</span>
-                                    <span class="item-count CompareCuntFromController">0
-                                        items</span>
+                                    <span class="item-count">
+                                        {{ compareCount() }} items
+                                    </span>
                                 </div>
+
                             </a>
                         </div>
 
